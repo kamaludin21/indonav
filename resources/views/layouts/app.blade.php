@@ -1,3 +1,7 @@
+@php
+  $industry = App\Models\Industry::get();
+@endphp
+
 <!doctype html>
 <html>
 
@@ -86,18 +90,235 @@
 
     </div>
     {{-- Navigation --}}
-    <div class="bg-orange-400 flex items-center justify-between px-2 md:px-[5%] py-3">
+    <div class="bg-orange-400 flex items-center justify-between px-2 md:px-[5%] py-3 relative">
       <div class="block md:hidden">
         <img class="h-6 w-auto" src="{{ asset('img/indonav_white.png') }}" alt="">
       </div>
-      <nav class="hidden md:block">
-        <ul class="flex gap-6 text-xl font-light text-slate-100">
-          <li class="drop-shadow underline-offset-2 underline text-white"><a href="/">Home</a></li>
-          <li class="drop-shadow underline-offset-2"><a href="/about">About</a></li>
-          <li class="drop-shadow underline-offset-2"><a href="/services">Services</a></li>
-          <li class="drop-shadow underline-offset-2"><a href="/blog">Blog</a></li>
-          <li class="drop-shadow underline-offset-2"><a href="/contact">Contact</a></li>
-        </ul>
+      <nav class="hidden md:block ">
+        <div class="flex gap-6 text-xl font-light text-slate-100">
+          <div class="drop-shadow underline-offset-4"><a href="/">Home</a></div>
+          {{-- Industry --}}
+          <div class="group">
+            <div class="drop-shadow underline-offset-4 underline text-white">
+              <a href="/">Industries</a>
+            </div>
+            <div class="group-hover:block hidden absolute left-0 top-10 max-w-screen">
+              <div class="bg-white border-b mt-6 w-screen h-full px-[4%] pt-[1%] pb-[2%]">
+                <div class="flex gap-1 mt-4 w-fit h-full text-slate-800">
+                  <div class="space-y-12 py-4 pl-4 pr-0 w-fit relative">
+                    <p class="text-3xl font-bold">Industries</p>
+                    <div class="space-y-4 text-slate-500 w-fit">
+                      @foreach ($industry as $index => $item)
+                        <div class="border-b-2 pb-1 hover:border-slate-600 duration-200 group/item">
+                          <a href="/industries/{{ $item->slug }}"
+                            class="text-base flex justify-between gap-4  items-center group-hover/item:text-slate-700 group-hover/item:font-medium duration-200">
+                            <span>{{ $item->title }}</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                              class="h-5 w-5">
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                              <path d="M9 6l6 6l-6 6" />
+                            </svg>
+                          </a>
+
+                          {{-- Submenu: show on hover --}}
+                          <div
+                            class="absolute hidden group-hover/item:block transition duration-500 ease-in-out top-0 left-full w-dvw max-w-2xl h-full">
+                            <div
+                              class="bg-white w-full  h-full space-y-10 flex flex-col justify-between pl-8 pr-0 py-4">
+                              <div class="space-y-2 text-slate-500">
+                                <p class="text-lg font-medium bg-orange-400 text-white w-fit px-1">{{ $item->title }}
+                                </p>
+                                {{-- Foreach sub-industries --}}
+                                @foreach ($item->subindustry as $subitem)
+                                  <div class="border-b-2 pb-1 group hover:border-slate-600 duration-200 group">
+                                    <a href="/industries/{{ $subitem->slug }}"
+                                      class="text-base flex justify-between gap-4  items-center group-hover:text-slate-700 group-hover:font-medium duration-200">
+                                      <span>{{ $subitem->title }}</span>
+                                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="h-5 w-5">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M9 6l6 6l-6 6" />
+                                      </svg>
+                                    </a>
+                                  </div>
+                                @endforeach
+                              </div>
+                              <div class="space-y-4">
+                                <p class="text-base">{{ $item->description }}</p>
+                                <a href="/"
+                                  class="bg-orange-400 px-2 py-1 text-base text-white rounded-full">Selengkapnya</a>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      @endforeach
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{-- Industry --}}
+          {{-- Products  --}}
+          <div class="group">
+            <div class="drop-shadow underline-offset-4"><a href="/services">Products</a></div>
+            <div class="group-hover:block hidden absolute left-0 top-10 max-w-screen">
+              <div class="bg-white border-b mt-6 w-screen h-full px-[4%] pt-[1%] pb-[2%]">
+                <div class="flex gap-1 mt-4 w-fit h-full text-slate-800">
+                  <div class="space-y-12 py-4 pl-4 pr-0 w-fit relative">
+                    <p class="text-3xl font-bold">Products</p>
+                    <div class="space-y-4 text-slate-500 w-fit">
+                      <div class="border-b-2 pb-1 hover:border-slate-600 duration-200 group/item">
+                        <a href="#"
+                          class="text-base flex justify-between gap-4  items-center group-hover/item:text-slate-700 group-hover/item:font-medium duration-200">
+                          <span>Send an Inquiry</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="h-5 w-5">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M9 6l6 6l-6 6" />
+                          </svg>
+                        </a>
+                      </div>
+                      <div class="border-b-2 pb-1 hover:border-slate-600 duration-200 group/item">
+                        <a href="#"
+                          class="text-base flex justify-between gap-4  items-center group-hover/item:text-slate-700 group-hover/item:font-medium duration-200">
+                          <span>Support and Training</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="h-5 w-5">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M9 6l6 6l-6 6" />
+                          </svg>
+                        </a>
+                      </div>
+                      <div class="border-b-2 pb-1 hover:border-slate-600 duration-200 group/item">
+                        <a href="#"
+                          class="text-base flex justify-between gap-4  items-center group-hover/item:text-slate-700 group-hover/item:font-medium duration-200">
+                          <span>Maintenance and Repair</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="h-5 w-5">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M9 6l6 6l-6 6" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{-- Products --}}
+          {{-- Support --}}
+          <div class="group">
+            <div class="drop-shadow underline-offset-4"><a href="/services">Support</a></div>
+            <div class="group-hover:block hidden absolute left-0 top-10 max-w-screen">
+              <div class="bg-white border-b mt-6 w-screen h-full px-[4%] pt-[1%] pb-[2%]">
+                <div class="flex gap-1 mt-4 w-fit h-full text-slate-800">
+                  <div class="space-y-12 py-4 pl-4 pr-0 w-fit relative">
+                    <p class="text-3xl font-bold">Support</p>
+                    <div class="space-y-4 text-slate-500 w-fit">
+                      <div class="border-b-2 pb-1 hover:border-slate-600 duration-200 group/item">
+                        <a href="#"
+                          class="text-base flex justify-between gap-4  items-center group-hover/item:text-slate-700 group-hover/item:font-medium duration-200">
+                          <span>Send an Inquiry</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="h-5 w-5">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M9 6l6 6l-6 6" />
+                          </svg>
+                        </a>
+                      </div>
+                      <div class="border-b-2 pb-1 hover:border-slate-600 duration-200 group/item">
+                        <a href="#"
+                          class="text-base flex justify-between gap-4  items-center group-hover/item:text-slate-700 group-hover/item:font-medium duration-200">
+                          <span>Support and Training</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="h-5 w-5">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M9 6l6 6l-6 6" />
+                          </svg>
+                        </a>
+                      </div>
+                      <div class="border-b-2 pb-1 hover:border-slate-600 duration-200 group/item">
+                        <a href="#"
+                          class="text-base flex justify-between gap-4  items-center group-hover/item:text-slate-700 group-hover/item:font-medium duration-200">
+                          <span>Maintenance and Repair</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="h-5 w-5">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M9 6l6 6l-6 6" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{-- Support --}}
+          {{-- About Us --}}
+          <div class="group">
+            <div class="drop-shadow underline-offset-4"><a href="/services">About Us</a></div>
+            <div class="group-hover:block hidden absolute left-0 top-10 max-w-screen">
+              <div class="bg-white border-b mt-6 w-screen h-full px-[4%] pt-[1%] pb-[2%]">
+                <div class="flex gap-1 mt-4 w-fit h-full text-slate-800">
+                  <div class="space-y-12 py-4 pl-4 pr-0 w-fit relative">
+                    <p class="text-3xl font-bold">About Us</p>
+                    <div class="space-y-4 text-slate-500 w-fit">
+                      <div class="border-b-2 pb-1 hover:border-slate-600 duration-200 group/item">
+                        <a href="#"
+                          class="text-base flex justify-between gap-4  items-center group-hover/item:text-slate-700 group-hover/item:font-medium duration-200">
+                          <span>Overview</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="h-5 w-5">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M9 6l6 6l-6 6" />
+                          </svg>
+                        </a>
+                      </div>
+                      <div class="border-b-2 pb-1 hover:border-slate-600 duration-200 group/item">
+                        <a href="#"
+                          class="text-base flex justify-between gap-4  items-center group-hover/item:text-slate-700 group-hover/item:font-medium duration-200">
+                          <span>News and Event</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="h-5 w-5">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M9 6l6 6l-6 6" />
+                          </svg>
+                        </a>
+                      </div>
+                      <div class="border-b-2 pb-1 hover:border-slate-600 duration-200 group/item">
+                        <a href="#"
+                          class="text-base flex justify-between gap-4  items-center group-hover/item:text-slate-700 group-hover/item:font-medium duration-200">
+                          <span>Maintenance and Repair</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="h-5 w-5">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M9 6l6 6l-6 6" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{-- About Us --}}
+        </div>
       </nav>
       {{-- Burger Menu --}}
       <div class="block md:hidden">
@@ -109,7 +330,6 @@
             <path d="M7 12h13" />
             <path d="M10 18h10" />
           </svg>
-
         </button>
       </div>
       {{-- Search box --}}
@@ -132,13 +352,11 @@
   </div>
 
   <main>
-    {{-- Carousel --}}
     @yield('content')
-    {{-- Carousel End --}}
-
   </main>
 
-  <footer class="bg-white border-t-2 grid grid-cols-1 md:grid-cols-2 max-w-screen-lg mx-auto py-10 md:py-20 px-2 md:px-0">
+  <footer
+    class="bg-white border-t-2 grid grid-cols-1 md:grid-cols-2 max-w-screen-lg mx-auto py-10 md:py-20 px-2 md:px-0">
     <div class="space-y-6">
       <img class="h-8 w-auto" src="{{ asset('img/indonav.png') }}" alt="">
 
@@ -178,16 +396,16 @@
     </div>
     <div class="flex gap-6 justify-start md:justify-end">
       <div class="space-y-3">
-        <p class="text-lg font-medium">Company</p>
-        <ul class="space-y-2">
+        <p class="text-lg font-medium text-slate-500">Company</p>
+        <ul class="space-y-2 text-slate-600">
           <li>About Us</li>
           <li>Contact</li>
           <li>Careers</li>
         </ul>
       </div>
       <div class="space-y-3">
-        <p class="text-lg font-medium">Resource</p>
-        <ul class="space-y-2">
+        <p class="text-lg font-medium text-slate-500">Resource</p>
+        <ul class="space-y-2 text-slate-600">
           <li>News</li>
           <li>Blog</li>
           <li>Calendar</li>
@@ -196,7 +414,7 @@
     </div>
   </footer>
   <div class="max-w-screen-lg mx-auto flex justify-center border-t-2 py-2">
-    <p class="text-sm font-medium text-slate-400">Copyright 	&copy; 2024</p>
+    <p class="text-sm font-medium text-slate-400">Copyright &copy; 2024</p>
   </div>
 
 </body>

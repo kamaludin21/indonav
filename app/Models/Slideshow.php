@@ -15,6 +15,7 @@ class Slideshow extends Model
       'image',
       'description',
       'content',
+      'redirect',
       'publish_date'
     ];
   }

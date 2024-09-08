@@ -1,31 +1,25 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Resources\IndustryResource\RelationManagers;
 
-use App\Filament\Resources\IndustryResource\Pages;
-use App\Filament\Resources\IndustryResource\RelationManagers;
-use App\Models\Industry;
-use Filament\Forms;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
-use Filament\Forms\Set;
-use Filament\Resources\Resource;
+use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Set;
+use Illuminate\Support\Str;
 
-class IndustryResource extends Resource
+class SubindustryRelationManager extends RelationManager
 {
-  protected static ?string $model = Industry::class;
+  protected static string $relationship = 'subindustry';
 
-  protected static ?string $navigationIcon = 'heroicon-o-building-library';
-
-  public static function form(Form $form): Form
+  public function form(Form $form): Form
   {
     return $form
       ->schema([
@@ -39,7 +33,6 @@ class IndustryResource extends Resource
         TextInput::make('slug')
           ->label('Slug')
           ->placeholder('Slug')
-          ->unique(ignoreRecord: true)
           ->disabled()
           ->dehydrated()
           ->readOnly(),
@@ -59,9 +52,10 @@ class IndustryResource extends Resource
       ]);
   }
 
-  public static function table(Table $table): Table
+  public function table(Table $table): Table
   {
     return $table
+      ->recordTitleAttribute('title')
       ->columns([
         TextColumn::make('index')
           ->label('No.')
@@ -75,27 +69,20 @@ class IndustryResource extends Resource
           ->lineClamp(2)
           ->searchable(),
       ])
+      ->filters([
+        //
+      ])
+      ->headerActions([
+        Tables\Actions\CreateAction::make(),
+      ])
       ->actions([
-        Tables\Actions\ActionGroup::make([
-          Tables\Actions\EditAction::make(),
-          Tables\Actions\DeleteAction::make(),
-        ])
+        Tables\Actions\EditAction::make(),
+        Tables\Actions\DeleteAction::make(),
+      ])
+      ->bulkActions([
+        Tables\Actions\BulkActionGroup::make([
+          Tables\Actions\DeleteBulkAction::make(),
+        ]),
       ]);
-  }
-
-  public static function getRelations(): array
-  {
-    return [
-      RelationManagers\SubindustryRelationManager::class,
-    ];
-  }
-
-  public static function getPages(): array
-  {
-    return [
-      'index' => Pages\ListIndustries::route('/'),
-      'create' => Pages\CreateIndustry::route('/create'),
-      'edit' => Pages\EditIndustry::route('/{record}/edit'),
-    ];
   }
 }
