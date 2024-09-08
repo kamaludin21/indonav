@@ -14,7 +14,7 @@
       <div class="swiper-wrapper">
         @foreach ($slideshows as $item)
           <div
-            class="swiper-slide bg-no-repeat bg-center bg-cover" style="background-image: url('{{ asset($item->image) }}');">
+            class="swiper-slide bg-no-repeat bg-center bg-cover" style="background-image: url('{{ asset('storage/'.$item->image) }}');">
             <div class="h-dvh flex max-w-screen-sm md:max-w-screen-lg mx-auto items-end md:items-center pb-[15%] px-[5%]">
               <div class="space-y-4">
                 <h2 class="text-2xl md:text-5xl font-bold text-white drop-shadow-lg">{{ $item->title }}</h2>
@@ -52,7 +52,7 @@
       @foreach ($news as $index => $item )
       <div class="{{ $index === 0 ? 'col-span-2' : '' }}">
         <img class="h-56 w-full object-cover"
-          src="{{ asset($item->image) }}"
+          src="{{ asset('storage/'.$item->image) }}"
           alt="">
         <p class="text-slate-500 mt-2 font-light text-sm">{{ Carbon::parse($item->publish_date)->translatedFormat('l, j F Y') }}</p>
         <a href="/about-us/news/{{ $item->slug }}"
