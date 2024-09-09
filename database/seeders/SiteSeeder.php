@@ -74,7 +74,6 @@ class SiteSeeder extends Seeder
         'image' => $data['image'],
         'url' => $data['url'],
         'description' => $data['description'],
-        'publish_date' => $data['publish_date'],
         'created_at' => $data['created_at'],
         'updated_at' => $data['updated_at'],
       ]);
