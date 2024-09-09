@@ -3,6 +3,7 @@
   $industry = App\Models\Industry::get();
   $slideshows = App\Models\Slideshow::get();
   $news = App\Models\News::limit(7)->get();
+  $sites = App\Models\Site::get()->keyBy('slug');
 @endphp
 
 @extends('layouts.app')
@@ -93,21 +94,12 @@
 
     {{-- Company --}}
     <div class="max-w-screen-lg space-y-10 py-20 mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 px-2 md:px-0 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 px-2 lg:px-0 gap-4">
         <div>
           <p class="text-4xl font-light text-slate-700">Tentang Kami</p>
         </div>
         <div class="space-y-4 text-base tracking-wide text-slate-600">
-          <p>INDONAV is a pioneering company specializing in advanced GNSS navigation and positioning solutions. With
-            a focus on innovation, INDONAV is committed to delivering top-tier technologies that meet the evolving
-            needs of industries worldwide. Their solutions empower businesses to achieve precision and efficiency in a
-            range of applications, from land surveying to autonomous systems.</p>
-
-          <p>With a steadily growing presence across global markets, INDONAV has emerged as a key player in the field
-            of geomatics technology. Their success is driven by a dedication to research and development, which keeps
-            them at the forefront of industry advancements. As one of the fastest-growing companies in this space,
-            INDONAV continues to redefine the possibilities of navigation and positioning.
-          </p>
+          {!! $sites['tentang-kami']?->description !!}
         </div>
       </div>
     </div>

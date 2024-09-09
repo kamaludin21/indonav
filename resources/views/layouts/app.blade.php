@@ -492,7 +492,7 @@
   </main>
 
   <footer
-    class="bg-white border-t-2 grid grid-cols-1 md:grid-cols-2 max-w-screen-lg mx-auto py-10 md:py-20 px-2 md:px-0">
+    class="bg-white border-t-2 grid grid-cols-1 md:grid-cols-2 max-w-screen-lg mx-auto py-10 md:py-20 px-2 lg:px-0">
     <div class="space-y-6">
       <img class="h-8 w-auto" src="{{ asset('img/indonav.png') }}" alt="">
 

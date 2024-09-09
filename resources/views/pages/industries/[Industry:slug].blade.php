@@ -5,7 +5,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="max-w-screen-lg space-y-10 px-2 md:px-0 py-20 mx-auto">
+  <div class="max-w-screen-lg space-y-10 px-2 lg:px-0 py-20 mx-auto">
 
     <div class="text-start space-y-4">
       <h2 class="text-2xl md:text-4xl font-bold text-orange-400">{{ $industry->title }}</h2>

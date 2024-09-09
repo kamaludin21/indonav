@@ -8,6 +8,7 @@ use App\Models\Industry;
 use App\Models\Site;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -45,8 +46,7 @@ class SiteResource extends Resource
           ->disabled()
           ->dehydrated()
           ->readOnly(),
-        Textarea::make('description')
-          ->autosize()
+        RichEditor::make('description')
           ->label('Keterangan'),
         FileUpload::make('image')
           ->label('Gambar')
