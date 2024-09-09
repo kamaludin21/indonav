@@ -1,5 +1,7 @@
 @php
   $industry = App\Models\Industry::get();
+  $productCategory = App\Models\ProductCategory::get();
+  $sites = App\Models\Site::get()->keyBy('slug');
 @endphp
 
 <!doctype html>
@@ -9,6 +11,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+  <title>INDONAV</title>
+  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+  <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
 </head>
 
@@ -27,7 +33,7 @@
             <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
             <path d="M3 7l9 6l9 -6" />
           </svg>
-          <p class="text-sm text-slate-500">indonav@mail.com</p>
+          <p class="text-sm text-slate-500">{{ $sites['email']?->description }}</p>
         </div>
         <div class="flex items-center gap-1">
           <svg xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -36,13 +42,15 @@
             <path
               d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
           </svg>
-          <p class="text-sm text-slate-500">+6309-4934-9293</p>
+          <p class="text-sm text-slate-500">{{ $sites['phone']?->description }}</p>
         </div>
       </div>
 
       {{-- Brand/LOGO --}}
       <div class="place-self-center">
-        <img class="h-6 w-auto" src="{{ asset('img/indonav.png') }}" alt="">
+        <a href="{{ $sites['logo-desktop']?->url }}">
+          <img class="h-6 w-auto" src="{{ asset('storage/' . $sites['logo-desktop']?->image) }}" alt="">
+        </a>
       </div>
 
       <div class="flex gap-2 place-content-end">
@@ -92,14 +100,16 @@
     {{-- Navigation --}}
     <div class="bg-orange-400 flex items-center justify-between px-2 md:px-[5%] py-3 relative">
       <div class="block md:hidden">
-        <img class="h-6 w-auto" src="{{ asset('img/indonav_white.png') }}" alt="">
+        <a href="{{ $sites['logo-mobile']?->url }}">
+          <img class="h-6 w-auto" src="{{ asset('storage/' . $sites['logo-mobile']?->image) }}" alt="">
+        </a>
       </div>
       <nav class="hidden md:block ">
         <div class="flex gap-6 text-xl font-light text-slate-100">
           <div class="drop-shadow underline-offset-4"><a href="/">Home</a></div>
           {{-- Industry --}}
           <div class="group">
-            <div class="drop-shadow underline-offset-4 underline text-white">
+            <div class="drop-shadow underline-offset-4 hover:underline text-white">
               <a href="/">Industries</a>
             </div>
             <div class="group-hover:block hidden absolute left-0 top-10 max-w-screen">
@@ -132,7 +142,7 @@
                                 {{-- Foreach sub-industries --}}
                                 @foreach ($item->subindustry as $subitem)
                                   <div class="border-b-2 pb-1 group hover:border-slate-600 duration-200 group">
-                                    <a href="/industries/{{ $subitem->slug }}"
+                                    <a href=""
                                       class="text-base flex justify-between gap-4  items-center group-hover:text-slate-700 group-hover:font-medium duration-200">
                                       <span>{{ $subitem->title }}</span>
                                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -164,49 +174,27 @@
           {{-- Industry --}}
           {{-- Products  --}}
           <div class="group">
-            <div class="drop-shadow underline-offset-4"><a href="/services">Products</a></div>
+            <div class="drop-shadow underline-offset-4"><a href="/products">Products</a></div>
             <div class="group-hover:block hidden absolute left-0 top-10 max-w-screen">
               <div class="bg-white border-b mt-6 w-screen h-full px-[4%] pt-[1%] pb-[2%]">
                 <div class="flex gap-1 mt-4 w-fit h-full text-slate-800">
                   <div class="space-y-12 py-4 pl-4 pr-0 w-fit relative">
                     <p class="text-3xl font-bold">Products</p>
                     <div class="space-y-4 text-slate-500 w-fit">
-                      <div class="border-b-2 pb-1 hover:border-slate-600 duration-200 group/item">
-                        <a href="#"
-                          class="text-base flex justify-between gap-4  items-center group-hover/item:text-slate-700 group-hover/item:font-medium duration-200">
-                          <span>Send an Inquiry</span>
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="h-5 w-5">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M9 6l6 6l-6 6" />
-                          </svg>
-                        </a>
-                      </div>
-                      <div class="border-b-2 pb-1 hover:border-slate-600 duration-200 group/item">
-                        <a href="#"
-                          class="text-base flex justify-between gap-4  items-center group-hover/item:text-slate-700 group-hover/item:font-medium duration-200">
-                          <span>Support and Training</span>
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="h-5 w-5">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M9 6l6 6l-6 6" />
-                          </svg>
-                        </a>
-                      </div>
-                      <div class="border-b-2 pb-1 hover:border-slate-600 duration-200 group/item">
-                        <a href="#"
-                          class="text-base flex justify-between gap-4  items-center group-hover/item:text-slate-700 group-hover/item:font-medium duration-200">
-                          <span>Maintenance and Repair</span>
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="h-5 w-5">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M9 6l6 6l-6 6" />
-                          </svg>
-                        </a>
-                      </div>
+                      @foreach ($productCategory as $item)
+                        <div class="border-b-2 pb-1 hover:border-slate-600 duration-200 group/item">
+                          <a href="/products/{{ $item->slug }}"
+                            class="text-base flex justify-between gap-4  items-center group-hover/item:text-slate-700 group-hover/item:font-medium duration-200">
+                            <span>{{ $item->title }}</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                              class="h-5 w-5">
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                              <path d="M9 6l6 6l-6 6" />
+                            </svg>
+                          </a>
+                        </div>
+                      @endforeach
                     </div>
                   </div>
                 </div>
@@ -216,7 +204,7 @@
           {{-- Products --}}
           {{-- Support --}}
           <div class="group">
-            <div class="drop-shadow underline-offset-4"><a href="/services">Support</a></div>
+            <div class="drop-shadow underline-offset-4"><a href="/support">Support</a></div>
             <div class="group-hover:block hidden absolute left-0 top-10 max-w-screen">
               <div class="bg-white border-b mt-6 w-screen h-full px-[4%] pt-[1%] pb-[2%]">
                 <div class="flex gap-1 mt-4 w-fit h-full text-slate-800">
@@ -224,7 +212,7 @@
                     <p class="text-3xl font-bold">Support</p>
                     <div class="space-y-4 text-slate-500 w-fit">
                       <div class="border-b-2 pb-1 hover:border-slate-600 duration-200 group/item">
-                        <a href="#"
+                        <a href="/support/inquiry"
                           class="text-base flex justify-between gap-4  items-center group-hover/item:text-slate-700 group-hover/item:font-medium duration-200">
                           <span>Send an Inquiry</span>
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -236,7 +224,7 @@
                         </a>
                       </div>
                       <div class="border-b-2 pb-1 hover:border-slate-600 duration-200 group/item">
-                        <a href="#"
+                        <a href="/support/support-training"
                           class="text-base flex justify-between gap-4  items-center group-hover/item:text-slate-700 group-hover/item:font-medium duration-200">
                           <span>Support and Training</span>
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -248,7 +236,7 @@
                         </a>
                       </div>
                       <div class="border-b-2 pb-1 hover:border-slate-600 duration-200 group/item">
-                        <a href="#"
+                        <a href="/support/maintenance-repair"
                           class="text-base flex justify-between gap-4  items-center group-hover/item:text-slate-700 group-hover/item:font-medium duration-200">
                           <span>Maintenance and Repair</span>
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -268,7 +256,7 @@
           {{-- Support --}}
           {{-- About Us --}}
           <div class="group">
-            <div class="drop-shadow underline-offset-4"><a href="/services">About Us</a></div>
+            <div class="drop-shadow underline-offset-4"><a href="/about-us">About Us</a></div>
             <div class="group-hover:block hidden absolute left-0 top-10 max-w-screen">
               <div class="bg-white border-b mt-6 w-screen h-full px-[4%] pt-[1%] pb-[2%]">
                 <div class="flex gap-1 mt-4 w-fit h-full text-slate-800">
@@ -276,7 +264,7 @@
                     <p class="text-3xl font-bold">About Us</p>
                     <div class="space-y-4 text-slate-500 w-fit">
                       <div class="border-b-2 pb-1 hover:border-slate-600 duration-200 group/item">
-                        <a href="#"
+                        <a href="/about-us/overview"
                           class="text-base flex justify-between gap-4  items-center group-hover/item:text-slate-700 group-hover/item:font-medium duration-200">
                           <span>Overview</span>
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -288,21 +276,9 @@
                         </a>
                       </div>
                       <div class="border-b-2 pb-1 hover:border-slate-600 duration-200 group/item">
-                        <a href="#"
+                        <a href="/about-us/news-event"
                           class="text-base flex justify-between gap-4  items-center group-hover/item:text-slate-700 group-hover/item:font-medium duration-200">
                           <span>News and Event</span>
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="h-5 w-5">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M9 6l6 6l-6 6" />
-                          </svg>
-                        </a>
-                      </div>
-                      <div class="border-b-2 pb-1 hover:border-slate-600 duration-200 group/item">
-                        <a href="#"
-                          class="text-base flex justify-between gap-4  items-center group-hover/item:text-slate-700 group-hover/item:font-medium duration-200">
-                          <span>Maintenance and Repair</span>
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             class="h-5 w-5">
@@ -321,16 +297,172 @@
         </div>
       </nav>
       {{-- Burger Menu --}}
-      <div class="block md:hidden">
-        <button class="border p-1 rounded-md text-white">
+      <div class="block md:hidden group">
+        <button class="border p-1 rounded-md text-white" data-drawer-target="drawer-navigation"
+          data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M4 6h16" />
             <path d="M7 12h13" />
             <path d="M10 18h10" />
           </svg>
         </button>
+        {{-- Mobile Menu --}}
+        <div class="">
+          <!-- drawer component -->
+          <div id="drawer-navigation"
+            class="fixed left-0 top-0 z-40 h-screen w-[90%] -translate-x-full overflow-y-auto bg-white p-4 transition-transform"
+            tabindex="-1" aria-labelledby="drawer-navigation-label">
+            <h5 id="drawer-navigation-label" class="text-base font-semibold uppercase text-gray-500">Menu</h5>
+            <button type="button" data-drawer-hide="drawer-navigation" aria-controls="drawer-navigation"
+              class="absolute end-2.5 top-2.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900">
+              <svg class="h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 14 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+              </svg>
+              <span class="sr-only">Close menu</span>
+            </button>
+            <div class="overflow-y-auto py-4">
+              <ul class="space-y-2 font-medium">
+                <li>
+                  <a href="/" class="group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100">
+                    <svg class="h-5 w-5 text-gray-500 transition duration-75 group-hover:text-gray-900"
+                      aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                      <path
+                        d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
+                      <path
+                        d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
+                    </svg>
+                    <span class="ms-3">Home</span>
+                  </a>
+                </li>
+                <li>
+                  <button type="button"
+                    class="group flex w-full items-center rounded-lg p-2 text-base text-gray-900 transition duration-75 hover:bg-gray-100"
+                    aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                    <svg class="h-5 w-5 flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900"
+                      aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                      <path
+                        d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z" />
+                    </svg>
+                    <span class="ms-3 flex-1 whitespace-nowrap text-left rtl:text-right">Industries</span>
+                    <svg class="h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                      viewBox="0 0 10 6">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 1 4 4 4-4" />
+                    </svg>
+                  </button>
+                  <ul id="dropdown-example" class="hidden space-y-2 py-2">
+                    @foreach ($industry as $index => $item)
+                      <li>
+                        <a href="/industries/{{ $item->slug }}"
+                          class="group flex w-full items-center rounded-lg p-2 pl-11 text-gray-900 transition duration-75 hover:bg-gray-100">{{ $item->title }}</a>
+                      </li>
+                    @endforeach
+                  </ul>
+                </li>
+                <li>
+                  <button type="button"
+                    class="group flex w-full items-center rounded-lg p-2 text-base text-gray-900 transition duration-75 hover:bg-gray-100"
+                    aria-controls="dropdown-product" data-collapse-toggle="dropdown-product">
+                    <svg class="h-5 w-5 flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 "
+                      aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                      <path
+                        d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
+                    </svg>
+                    <span class="ms-3 flex-1 whitespace-nowrap text-left rtl:text-right">Products</span>
+                    <svg class="h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                      viewBox="0 0 10 6">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 1 4 4 4-4" />
+                    </svg>
+                  </button>
+                  <ul id="dropdown-product" class="hidden space-y-2 py-2">
+                    @foreach ($productCategory as $item)
+                      <li>
+                        <a href="/products/{{ $item->slug }}"
+                          class="group flex w-full items-center rounded-lg p-2 pl-11 text-gray-900 transition duration-75 hover:bg-gray-100">{{ $item->title }}</a>
+                      </li>
+                    @endforeach
+                  </ul>
+                </li>
+                <li>
+                  <button type="button"
+                    class="group flex w-full items-center rounded-lg p-2 text-base text-gray-900 transition duration-75 hover:bg-gray-100"
+                    aria-controls="dropdown-support" data-collapse-toggle="dropdown-support">
+                    <svg class="h-5 w-5 flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900"
+                      aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                      <path
+                        d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z" />
+                    </svg>
+                    <span class="ms-3 flex-1 whitespace-nowrap text-left rtl:text-right">Support</span>
+                    <svg class="h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                      viewBox="0 0 10 6">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 1 4 4 4-4" />
+                    </svg>
+                  </button>
+                  <ul id="dropdown-support" class="hidden space-y-2 py-2">
+
+                    <li>
+                      <a href="/support/inquiry"
+                        class="group flex w-full items-center rounded-lg p-2 pl-11 text-gray-900 transition duration-75 hover:bg-gray-100">
+                        Send an Inquiry
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/support/support-training"
+                        class="group flex w-full items-center rounded-lg p-2 pl-11 text-gray-900 transition duration-75 hover:bg-gray-100">
+                        Support and Training
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/support/maintenance-repair"
+                        class="group flex w-full items-center rounded-lg p-2 pl-11 text-gray-900 transition duration-75 hover:bg-gray-100">
+                        Maintenance and Repair
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <button type="button"
+                    class="group flex w-full items-center rounded-lg p-2 text-base text-gray-900 transition duration-75 hover:bg-gray-100"
+                    aria-controls="dropdown-about-us" data-collapse-toggle="dropdown-about-us">
+                    <svg class="h-5 w-5 flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900"
+                      aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                      <path
+                        d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z" />
+                    </svg>
+                    <span class="ms-3 flex-1 whitespace-nowrap text-left rtl:text-right">About Us</span>
+                    <svg class="h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                      viewBox="0 0 10 6">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 1 4 4 4-4" />
+                    </svg>
+                  </button>
+                  <ul id="dropdown-about-us" class="hidden space-y-2 py-2">
+
+                    <li>
+                      <a href="/about-us/overview"
+                        class="group flex w-full items-center rounded-lg p-2 pl-11 text-gray-900 transition duration-75 hover:bg-gray-100">
+                        Overview
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/support/news-event"
+                        class="group flex w-full items-center rounded-lg p-2 pl-11 text-gray-900 transition duration-75 hover:bg-gray-100">
+                        News and Event
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
       {{-- Search box --}}
       <div class="hidden md:block">
@@ -348,6 +480,10 @@
         </form>
       </div>
     </div>
+
+    {{-- Mobile --}}
+
+
 
   </div>
 
@@ -368,9 +504,7 @@
             <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
             <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
           </svg>
-          <p class="font-light text-base text-slate-500">Jalan Meruya Ilir, Rukan Business Park Kebun Jeruk Blok F-1
-            No.12,
-            Jakarta Barat</p>
+          <p class="font-light text-base text-slate-500">{{ $sites['alamat']?->description }}</p>
         </div>
         <div class="flex items-center gap-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -379,7 +513,7 @@
             <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
             <path d="M3 7l9 6l9 -6" />
           </svg>
-          <p class="text-sm text-slate-500">indonav@mail.com</p>
+          <p class="text-sm text-slate-500">{{ $sites['email']?->description }}</p>
         </div>
         <div class="flex items-center gap-1">
           <svg xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -388,7 +522,7 @@
             <path
               d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
           </svg>
-          <p class="text-sm text-slate-500">+6309-4934-9293</p>
+          <p class="text-sm text-slate-500">{{ $sites['phone']?->description }}</p>
         </div>
       </div>
 
@@ -396,27 +530,48 @@
     </div>
     <div class="flex gap-6 justify-start md:justify-end">
       <div class="space-y-3">
-        <p class="text-lg font-medium text-slate-500">Company</p>
-        <ul class="space-y-2 text-slate-600">
-          <li>About Us</li>
-          <li>Contact</li>
-          <li>Careers</li>
+        <p class="text-lg font-medium text-slate-500">Support </p>
+        <ul class="space-y-2 text-slate-500">
+          <li>
+            <a href="/support/inquiry" class="hover:text-orange-400 hover:underline">
+              Send an Inquiry
+            </a>
+          </li>
+          <li>
+            <a href="/support/support-training" class="hover:text-orange-400 hover:underline">
+              Support and Training
+            </a>
+          </li>
+          <li>
+            <a href="/support/maintenance-repair" class="hover:text-orange-400 hover:underline">
+              Maintenance and Repair
+            </a>
+          </li>
         </ul>
       </div>
       <div class="space-y-3">
-        <p class="text-lg font-medium text-slate-500">Resource</p>
-        <ul class="space-y-2 text-slate-600">
-          <li>News</li>
-          <li>Blog</li>
-          <li>Calendar</li>
+        <p class="text-lg font-medium text-slate-500">About Us</p>
+        <ul class="space-y-2 text-slate-500">
+          <li>
+            <a href="/about-us/overview" class="hover:text-orange-400 hover:underline">
+              Overview
+            </a>
+          </li>
+          <li>
+            <a href="/about-us/news-event" class="hover:text-orange-400 hover:underline">
+              News and Event
+            </a>
+          </li>
         </ul>
       </div>
+
     </div>
   </footer>
   <div class="max-w-screen-lg mx-auto flex justify-center border-t-2 py-2">
     <p class="text-sm font-medium text-slate-400">Copyright &copy; 2024</p>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 </body>
 
 </html>

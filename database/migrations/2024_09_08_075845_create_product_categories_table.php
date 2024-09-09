@@ -21,13 +21,13 @@ return new class extends Migration
       $table->timestamps();
     });
 
-    // Pivot table
-    Schema::create('category_product', function (Blueprint $table) {
-      $table->id();
-      $table->foreignIdFor(Product::class)->constrained()->onDelete('cascade');
-      $table->foreignIdFor(ProductCategory::class)->constrained()->onDelete('cascade');
-      $table->timestamps();
-    });
+    // Pivot table: (Pending)
+    // Schema::create('category_product', function (Blueprint $table) {
+    //   $table->id();
+    //   $table->foreignIdFor(Product::class)->constrained()->onDelete('cascade');
+    //   $table->foreignIdFor(ProductCategory::class)->constrained()->onDelete('cascade');
+    //   $table->timestamps();
+    // });
   }
 
   /**

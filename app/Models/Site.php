@@ -9,6 +9,12 @@ class Site extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
+    protected $fillable = [
+      'title',
+      'slug',
+      'url',
+      'image',
+      'description'
+    ];
   }
 
