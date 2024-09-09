@@ -1,5 +1,5 @@
 @php
-  $productCategory = App\Models\productCategory::where('slug', $slug)->first();
+  $productCategory = App\Models\ProductCategory::where('slug', $slug)->first();
   $product = App\Models\Product::where('product_category_id', $productCategory->id)->get();
 @endphp
 
