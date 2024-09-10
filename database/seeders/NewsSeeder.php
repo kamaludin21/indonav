@@ -15,7 +15,6 @@ class NewsSeeder extends Seeder
   {
     $news = array(
       array(
-        "id" => 1,
         "title" => "MCNAV 3D Guidance System for Excavators: A Next-Generation CHCNAV Solution That Makes Excavating Easier Than Ever Before",
         "slug" => "mcnav-3d-guidance-system-for-excavators-a-next-generation-chcnav-solution-that-makes-excavating-easier-than-ever-before",
         "image" => "news\/2024\/09\/01J78BKV148W31YP3PCDB8MQ5H.jpg",
@@ -26,7 +25,6 @@ class NewsSeeder extends Seeder
         "updated_at" => "2024-09-08T01:22:11.000Z"
       ),
       array(
-        "id" => 2,
         "title" => "Ensuring All-Weather High-Precision Positioning for Agricultural Vehicles with H-PPP",
         "slug" => "ensuring-all-weather-high-precision-positioning-for-agricultural-vehicles-with-h-ppp",
         "image" => "news\/2024\/09\/01J78BP0SWT63SDR6ME0N4G1MG.jpg",
@@ -37,7 +35,6 @@ class NewsSeeder extends Seeder
         "updated_at" => "2024-09-08T01:23:22.000Z"
       ),
       array(
-        "id" => 3,
         "title" => "The Critical Role of Accurate GIS Data Collection in Utilities, Urban Management, and Environmental Studies",
         "slug" => "the-critical-role-of-accurate-gis-data-collection-in-utilities-urban-management-and-environmental-studies",
         "image" => "news\/2024\/09\/01J78BRF5FFSXD600A7PE3KAYZ.jpg",
@@ -48,7 +45,6 @@ class NewsSeeder extends Seeder
         "updated_at" => "2024-09-08T01:24:42.000Z"
       ),
       array(
-        "id" => 4,
         "title" => "LiDAR Mapping in Open-Pit Mining: Pioneering Efficiency and Safety",
         "slug" => "lidar-mapping-in-open-pit-mining-pioneering-efficiency-and-safety",
         "image" => "news\/2024\/09\/01J78BWX5BKC0GB27AMKNMFV15.jpg",
@@ -59,7 +55,6 @@ class NewsSeeder extends Seeder
         "updated_at" => "2024-09-08T01:27:08.000Z"
       ),
       array(
-        "id" => 5,
         "title" => "CHCNAV Hosts Successful 2024 International Partner Conference: United in Success",
         "slug" => "chcnav-hosts-successful-2024-international-partner-conference-united-in-success",
         "image" => "news\/2024\/09\/01J78H64XZJNSG1W25FKC51GTS.webp",
@@ -73,7 +68,6 @@ class NewsSeeder extends Seeder
 
     foreach ($news as $data) {
       News::create([
-        'id' => $data['id'],
         'title' => $data['title'],
         'slug' => $data['slug'],
         'description' => $data['description'],

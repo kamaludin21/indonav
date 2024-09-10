@@ -80,7 +80,7 @@ class SiteSeeder extends Seeder
         "slug" => "support-training",
         "url" => null,
         "image" => null,
-        "description" => "<h2>GLOBAL TECHNICAL SUPPORT<\/h2><p>CHC Navigation provides essential support services including online technical assistance, powerful proactive support resources, and product updates. With global coverage and 100+ trained professional dealers and customer support specialists, CHC Navigation delivers complete and trustworthy service.<\/p>",
+        "description" => "<h2>GLOBAL TECHNICAL SUPPORT<\/h2><p>INDONAV provides essential support services including online technical assistance, powerful proactive support resources, and product updates. With global coverage and 100+ trained professional dealers and customer support specialists, INDONAV delivers complete and trustworthy service.<\/p>",
         "created_at" => "2024-09-08T18:10:42.000Z",
         "updated_at" => "2024-09-08T18:11:07.000Z"
       ),
@@ -90,7 +90,7 @@ class SiteSeeder extends Seeder
         "slug" => "maintenance-repair",
         "url" => null,
         "image" => null,
-        "description" => "<h2>GLOBAL REPAIR SERVICE<\/h2><p>CHC Navigation understands how downtime can impact our customer productivity. The combination of CHCNAV’s Regional Service Centers in Americas, EMEA and Asia and a global network of Certified Dealers’ Repair Centers, all our customers benefits from local maintenance and repair to ensure optimal performances of our products and solutions.<\/p>",
+        "description" => "<h2>GLOBAL REPAIR SERVICE<\/h2><p>INDONAV understands how downtime can impact our customer productivity. The combination of INDONAV’s Regional Service Centers in Americas, EMEA and Asia and a global network of Certified Dealers’ Repair Centers, all our customers benefits from local maintenance and repair to ensure optimal performances of our products and solutions.<\/p>",
         "created_at" => "2024-09-08T18:11:49.000Z",
         "updated_at" => "2024-09-08T18:11:49.000Z"
       ),
@@ -100,11 +100,12 @@ class SiteSeeder extends Seeder
         "slug" => "overview",
         "url" => null,
         "image" => null,
-        "description" => "<h2><strong>ABOUT CHC NAVIGATION<\/strong><\/h2><p>Founded in 2003, CHC Navigation (Huace:300627.SZ) creates innovative GNSS navigation and positioning solutions to make customers' work more efficient. CHCNAV products and solutions cover multiple industries such as geospatial, construction, agriculture and marine.<\/p><p>With a presence across the globe, distributors in more than 120 countries and more than 1,700 employees, CHC Navigation is today recognized as one of the fastest growing companies in geomatics technologies.<\/p>",
+        "description" => "<h2><strong>ABOUT INDONAV<\/strong><\/h2><p>Founded in 2003, INDONAV (Huace:300627.SZ) creates innovative GNSS navigation and positioning solutions to make customers' work more efficient. INDONAV products and solutions cover multiple industries such as geospatial, construction, agriculture and marine.<\/p><p>With a presence across the globe, distributors in more than 120 countries and more than 1,700 employees, INDONAV is today recognized as one of the fastest growing companies in geomatics technologies.<\/p>",
         "created_at" => "2024-09-08T18:12:44.000Z",
         "updated_at" => "2024-09-08T18:12:44.000Z"
       )
     );
+
 
     foreach ($sites as $data) {
       Site::create([

@@ -15,8 +15,4 @@ class ProductCategory extends Model
       'description'
     ];
 
-    // public function products()
-    // {
-    //     return $this->belongsToMany(Product::class);
-    // }
 }

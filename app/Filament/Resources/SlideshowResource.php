@@ -25,7 +25,8 @@ class SlideshowResource extends Resource
 {
   protected static ?string $model = Slideshow::class;
 
-  protected static ?string $navigationIcon = 'heroicon-o-command-line';
+  protected static ?string $navigationIcon = 'heroicon-o-square-3-stack-3d';
+  protected static ?int $navigationSort = 1;
 
   public static function form(Form $form): Form
   {

@@ -23,7 +23,7 @@
                   {{ $item->description }}
                 </p>
                 <div class="flex">
-                  <a href="/{{ $item->redirect ?? $item->slug }}"
+                  <a href="{{ $item->redirect ?? $item->slug }}"
                     class="bg-orange-400 w-fit px-4 py-2 text-white rounded-full">
                     <p>Selengkapnya</p>
                   </a>

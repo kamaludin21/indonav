@@ -15,7 +15,7 @@ class SubIndustrySeeder extends Seeder
   {
     $sub_industries = array(
       array(
-        "id" => 2,
+
         "industry_id" => 1,
         "title" => "Site Positioning",
         "slug" => "site-positioning",
@@ -24,7 +24,7 @@ class SubIndustrySeeder extends Seeder
         "updated_at" => "2024-09-08T00:45:41.000Z"
       ),
       array(
-        "id" => 1,
+
         "industry_id" => 1,
         "title" => "Land Surveying",
         "slug" => "land-surveying",
@@ -33,7 +33,7 @@ class SubIndustrySeeder extends Seeder
         "updated_at" => "2024-09-08T00:46:46.000Z"
       ),
       array(
-        "id" => 3,
+
         "industry_id" => 2,
         "title" => "Machine Control & Construction",
         "slug" => "machine-control-construction",
@@ -42,7 +42,6 @@ class SubIndustrySeeder extends Seeder
         "updated_at" => "2024-09-08T00:47:56.000Z"
       ),
       array(
-        "id" => 4,
         "industry_id" => 2,
         "title" => "Machine Control",
         "slug" => "machine-control",
@@ -51,7 +50,6 @@ class SubIndustrySeeder extends Seeder
         "updated_at" => "2024-09-08T00:48:19.000Z"
       ),
       array(
-        "id" => 5,
         "industry_id" => 2,
         "title" => "Site Positioning",
         "slug" => "site-positioning",
@@ -63,7 +61,6 @@ class SubIndustrySeeder extends Seeder
 
     foreach ($sub_industries as $data) {
       SubIndustry::create([
-        'id' => $data['id'],
         'industry_id' => $data['industry_id'],
         'title' => $data['title'],
         'slug' => $data['slug'],
