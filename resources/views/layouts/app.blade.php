@@ -113,9 +113,9 @@
               <a href="/">Industries</a>
             </div>
             <div class="group-hover:block hidden absolute left-0 top-10 max-w-screen">
-              <div class="bg-white border-b mt-6 w-screen h-full px-[4%] pt-[1%] pb-[2%]">
+              <div class="bg-white border-b mt-6 w-screen h-auto px-[4%] pt-[1%] pb-[2%]">
                 <div class="flex gap-1 mt-4 w-fit h-full text-slate-800">
-                  <div class="space-y-12 py-4 pl-4 pr-0 w-fit relative">
+                  <div class="space-y-44 py-4 pl-4 pr-0 w-fit relative">
                     <p class="text-3xl font-bold">Industries</p>
                     <div class="space-y-4 text-slate-500 w-fit">
                       @foreach ($industry as $index => $item)
@@ -135,8 +135,8 @@
                           <div
                             class="absolute hidden group-hover/item:block transition duration-500 ease-in-out top-0 left-full w-dvw max-w-2xl h-full">
                             <div
-                              class="bg-white w-full  h-full space-y-10 flex flex-col justify-between pl-8 pr-0 py-4">
-                              <div class="space-y-2 text-slate-500">
+                              class="bg-white w-full h-full space-y-10 flex flex-col justify-between pl-8 pr-0 py-4">
+                              <div class="space-y-2 text-slate-500 h-full">
                                 <p class="text-lg font-medium bg-orange-400 text-white w-fit px-1">{{ $item->title }}
                                 </p>
                                 {{-- Foreach sub-industries --}}
