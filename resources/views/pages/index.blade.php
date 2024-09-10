@@ -56,7 +56,7 @@
           <img class="h-56 w-full object-cover" src="{{ asset('storage/' . $item->image) }}" alt="">
           <p class="text-slate-500 mt-2 font-light text-sm">
             {{ Carbon::parse($item->publish_date)->translatedFormat('l, j F Y') }}</p>
-          <a href="/about-us/news/{{ $item->slug }}"
+          <a href="/about-us/news-event/{{ $item->slug }}"
             class="text-xl font-bold leading-7 line-clamp-3 text-slate-700 hover:text-orange-400 hover:cursor-pointer hover:underline hover:underline-offset-2">
             {{ $item->title }}</a>
         </div>
@@ -64,7 +64,7 @@
 
 
       <div class="h-full w-full flex items-center p-4 col-span-2 md:col-span-1 justify-center bg-orange-400">
-        <a href="/about-us/news"
+        <a href="/about-us/news-event"
           class="text-2xl font-bold leading-7 line-clamp-3 text-slate-100 hover:text-white hover:cursor-pointer hover:underline hover:underline-offset-2">Selengkapnya</a>
       </div>
     </div>
