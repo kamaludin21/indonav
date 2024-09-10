@@ -13,8 +13,8 @@
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 
   <title>INDONAV</title>
-  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-  <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+  <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
+  <link rel="icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
 
 </head>
 
