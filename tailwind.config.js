@@ -5,11 +5,6 @@ export default {
     "./resources/**/*.js",
     "./resources/**/*.vue",
   ],
-  safelist: [
-    {
-      pattern: /bg-\[url\(.*\)\]/,
-    },
-  ],
   theme: {
     extend: {},
   },

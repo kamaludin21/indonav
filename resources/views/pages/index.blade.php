@@ -2,8 +2,9 @@
   use Carbon\Carbon;
   $industry = App\Models\Industry::get();
   $slideshows = App\Models\Slideshow::get();
-  $news = App\Models\News::limit(7)->get();
+  // $news = App\Models\News::limit(7)->get();
   $sites = App\Models\Site::get()->keyBy('slug');
+  $products = App\Models\Product::limit(6)->get();
 @endphp
 
 @extends('layouts.app')
@@ -45,7 +46,7 @@
   {{-- Carousel End --}}
 
   {{-- News & Event --}}
-  <div class="max-w-screen-lg space-y-10 py-20 mx-auto">
+  {{-- <div class="max-w-screen-lg space-y-10 py-20 mx-auto">
     <div class="text-center">
       <h2 class="text-3xl font-bold">News & Event</h2>
     </div>
@@ -68,7 +69,7 @@
           class="text-2xl font-bold leading-7 line-clamp-3 text-slate-100 hover:text-white hover:cursor-pointer hover:underline hover:underline-offset-2">Selengkapnya</a>
       </div>
     </div>
-  </div>
+  </div> --}}
 
   {{-- Industries --}}
   <div class="max-w-screen-lg space-y-10 py-20 mx-auto">
@@ -76,7 +77,7 @@
       <h2 class="text-3xl font-bold">Industries</h2>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 px-2">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-2 md:px-0">
       @foreach ($industry as $item)
         <div class="bg-orange-100 flex flex-col justify-between p-6 space-y-2">
           <div class="pb-10 space-y-4">
@@ -90,7 +91,29 @@
         </div>
       @endforeach
     </div>
+  </div>
     {{-- Industries End --}}
+
+    {{-- Product --}}
+    <div class="bg-orange-400 p-2 md:p-0">
+      <div class="max-w-screen-lg space-y-10 py-20 mx-auto">
+        <div class="flex items-center justify-between">
+          <p class="text-3xl font-bold text-white">Products</p>
+          <a href="/products" class="hover:bg-white hover:text-orange-400 px-2 whitespace-nowrap py-1 border rounded-full text-white">Selengkapnya</a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 border ">
+          @foreach ($products as $item)
+          <div class="  p-4 hover:bg-white place-content-start border-b md:border-b-0 border-r group duration-200">
+            <img class="drop-shadow-lg h-auto w-full" src="{{ asset('storage/'.$item->image) }}" alt="">
+            <a href="/products/{{ $item->slug }}" class="text-2xl font-bold group-hover:text-orange-400 text-white hover:underline align-bottom">{{ $item->title }}</a>
+          </div>
+          @endforeach
+
+        </div>
+      </div>
+    </div>
+    {{-- Products End --}}
 
     {{-- Company --}}
     <div class="max-w-screen-lg space-y-10 py-20 mx-auto">
@@ -98,16 +121,19 @@
         <div>
           <p class="text-4xl font-light text-slate-700">Tentang Kami</p>
         </div>
-        <div class="space-y-4 text-base tracking-wide text-slate-600">
+        <div class="space-y-4 text-base tracking-wide text-slate-600 html-content">
           {!! $sites['tentang-kami']?->description !!}
         </div>
       </div>
     </div>
     {{-- Company End --}}
 
+
+
+
     {{-- Contact  --}}
 
-    <div class="bg-orange-400 px-[20%] text-center space-y-4 py-[5%] relative">
+    {{-- <div class="bg-orange-400 px-[20%] text-center space-y-4 py-[5%] relative">
 
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -125,14 +151,6 @@
         <path d="M4 12c1.526 2.955 4.588 5 8 5c3.41 0 6.473 -2.048 8 -5" />
         <path d="M12 5v-2" />
       </svg>
-
-      {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-        class="absolute left-40 top-20 h-20 w-20 text-slate-200/10">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5" />
-      </svg> --}}
-
 
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -158,6 +176,5 @@
         Contact Us
       </button>
 
-    </div>
-  </div>
+    </div> --}}
 @endsection
