@@ -19,7 +19,7 @@ return new class extends Migration
       $table->text('description')->nullable();
       $table->longText('content')->nullable(  );
       $table->string('redirect')->nullable();
-      $table->timestamp('publish_date');
+      $table->timestamp('publish_date')->nullable();
       $table->timestamps();
     });
   }
