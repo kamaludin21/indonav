@@ -113,7 +113,7 @@
           <div class="group">
             <div class="drop-shadow underline-offset-4"><a href="/products">Products</a></div>
             <div class="group-hover:block hidden absolute left-0 top-10 max-w-screen">
-              <div class="bg-white border-b mt-6 w-screen h-full px-[4%] pt-[1%] pb-[2%]">
+              <div class="bg-white border-b mt-5 w-screen h-full px-[4%] pt-[1%] pb-[2%]">
                 <div class="flex gap-1 mt-4 w-fit h-full text-slate-800">
                   <div class="space-y-12 py-4 pl-4 pr-0 w-fit relative">
                     <p class="text-3xl font-bold">Products</p>
