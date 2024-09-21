@@ -10,6 +10,6 @@ class IndustryController extends Controller
   public function view($slug)
   {
     $industry = Industry::where('slug', $slug)->first();
-    return view('pages.industries.[Industry:slug]', ['industry' => $industry]);
+    return view('pages.industries.slug', ['industry' => $industry]);
   }
 }
