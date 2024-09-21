@@ -67,14 +67,12 @@ class SlideshowResource extends Resource
         FileUpload::make('image')
           ->label('Gambar')
           ->maxSize(1024)
-          ->directory('/slideshow/' . date('Y/m'))
+          ->directory('slideshow')
           ->image()
           ->imageEditor()
           ->openable()
           ->downloadable()
           ->helperText('Maksimal ukuran file 1024 kb atau 1 mb'),
-
-
       ]);
   }
 

@@ -52,7 +52,7 @@ class SiteResource extends Resource
         FileUpload::make('image')
           ->label('Gambar')
           ->maxSize(1024)
-          ->directory('/industries/' . date('Y/m'))
+          ->directory('sites')
           ->image()
           ->imageEditor()
           ->openable()

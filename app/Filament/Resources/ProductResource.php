@@ -62,7 +62,7 @@ class ProductResource extends Resource
         FileUpload::make('image')
           ->label('Gambar')
           ->maxSize(1024)
-          ->directory('/news/' . date('Y/m'))
+          ->directory('products')
           ->image()
           ->imageEditor()
           ->openable()
