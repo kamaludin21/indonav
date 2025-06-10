@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {},
     fontFamily: {
-      sans: "Manrope",
+      sans: "Host Grotesk",
     },
   },
   plugins: [],
