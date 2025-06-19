@@ -14,7 +14,7 @@ class Site extends Model
       'slug',
       'url',
       'image',
-      'description'
+      'description',
     ];
   }
 

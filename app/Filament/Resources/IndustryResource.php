@@ -3,11 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\IndustryResource\Pages;
-use App\Filament\Resources\IndustryResource\RelationManagers;
 use App\Models\Industry;
-use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -17,8 +14,6 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class IndustryResource extends Resource
 {
@@ -83,13 +78,6 @@ class IndustryResource extends Resource
           Tables\Actions\DeleteAction::make(),
         ])
       ]);
-  }
-
-  public static function getRelations(): array
-  {
-    return [
-      RelationManagers\SubindustryRelationManager::class,
-    ];
   }
 
   public static function getPages(): array

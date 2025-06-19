@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Industry;
-use App\Models\ProductCategory;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,12 +14,15 @@ return new class extends Migration
   {
     Schema::create('products', function (Blueprint $table) {
       $table->id();
-      $table->foreignIdFor(ProductCategory::class)->constrained();
+      $table->foreignIdFor(Industry::class)->constrained();
       $table->string('title');
       $table->string('slug');
-      $table->text('description');
-      $table->text('content')->nullable();
-      $table->string('image')->nullable();
+      $table->string('image_product');
+      $table->text('description')->nullable();
+      $table->string('image_highlight')->nullable();
+      $table->text('highlight')->nullable();
+      $table->json('features')->nullable();
+      $table->json('specifications')->nullable();
       $table->timestamps();
     });
   }

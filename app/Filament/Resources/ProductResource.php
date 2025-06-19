@@ -3,16 +3,14 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProductResource\Pages;
-use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\Product;
-use App\Models\ProductCategory;
-use Filament\Forms;
-use Filament\Forms\Components\DatePicker;
+use App\Models\Industry;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Forms\Set;
 use Illuminate\Support\Str;
@@ -20,8 +18,6 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ProductResource extends Resource
 {
@@ -34,6 +30,13 @@ class ProductResource extends Resource
   {
     return $form
       ->schema([
+        Select::make('industry_id')
+          ->label('Kategori Produk')
+          ->options(Industry::all()->pluck('title', 'id'))
+          ->searchable()
+          ->required()
+          ->native(false)
+          ->columnSpanFull(),
         Textarea::make('title')
           ->autosize()
           ->label('Nama Produk')
@@ -41,39 +44,59 @@ class ProductResource extends Resource
           ->rows(1)
           ->live(onBlur: true)
           ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
-          ->required()
-          ->columnSpanFull(),
+          ->required(),
         TextInput::make('slug')
           ->label('Slug')
           ->placeholder('Slug')
           ->unique(ignoreRecord: true)
           ->disabled()
           ->dehydrated()
-          ->readOnly()
-          ->columnSpanFull(),
+          ->readOnly(),
         Textarea::make('description')
           ->autosize()
-          ->label('Keterangan')
-          ->maxLength(300)
-          ->columnSpanFull(),
-        RichEditor::make('content')
-          ->label('Konten')
-          ->columnSpanFull(),
-        FileUpload::make('image')
-          ->label('Gambar')
+          ->label('Keterangan Pendek')
+          ->maxLength(300),
+          FileUpload::make('image_product')
+          ->label('Gambar Produk')
           ->maxSize(1024)
           ->directory('products')
           ->image()
-          ->imageEditor()
           ->openable()
           ->downloadable()
-          ->helperText('Maksimal ukuran file 1024 kb atau 1 mb'),
-        Select::make('product_category_id')
-          ->label('Kategori Produk')
-          ->options(ProductCategory::all()->pluck('title', 'id'))
-          ->searchable()
-          ->required()
-          ->native(false),
+          ->helperText('Maksimal ukuran file 1000KB atau 1MB'),
+        RichEditor::make('highlight')
+          ->label('Highlight'),
+        FileUpload::make('image_highlight')
+          ->label('Gambar Ilustrasi')
+          ->maxSize(1024)
+          ->directory('products')
+          ->image()
+          ->openable()
+          ->downloadable()
+          ->helperText('Maksimal ukuran file 1000KB atau 1MB'),
+        Repeater::make('features')
+          ->schema([
+            FileUpload::make('image')
+              ->label('Gambar')
+              ->maxSize(1024)
+              ->directory('products')
+              ->image()
+              ->imageEditor()
+              ->openable()
+              ->downloadable()
+              ->helperText('Maksimal ukuran file 1000KB atau 1MB'),
+            TextInput::make('title'),
+            TextInput::make('description'),
+          ]),
+        Repeater::make('specifications')
+          ->schema([
+            FileUpload::make('document')
+              ->label('File')
+              ->maxSize(5065)
+              ->directory('products')
+              ->helperText('Maksimal ukuran file 5000KB atau 5MB'),
+            TextInput::make('title'),
+          ]),
       ]);
   }
 
@@ -87,9 +110,9 @@ class ProductResource extends Resource
         TextColumn::make('title')
           ->label('Nama Produk')
           ->searchable(),
-        TextColumn::make('productCategory.title')
-          ->label('Nama Produk')
-          ->searchable()
+        TextColumn::make('industry.title')
+          ->label('Kategori')
+          ->searchable(),
       ])
       ->actions([
         Tables\Actions\ActionGroup::make([

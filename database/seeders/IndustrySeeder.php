@@ -14,23 +14,23 @@ class IndustrySeeder extends Seeder
   public function run(): void
   {
     $industries = [
-      [
-        "title" => "Surveying & Engineering",
-        "slug" => "surveying-engineering",
-        "description" => "We develop and deliver advanced solutions to make surveying & engineering more productive. From post-processing geodetic GNSS receivers to the GNSS IMU RTK antennas, our solutions cover a wide range of applications such as construction and geodetic surveys or layout planning.",
-        "image" => null,
-        "created_at" => "2024-09-04T18:45:13.000Z",
-        "updated_at" => "2024-09-06T22:09:25.000Z"
-      ],
-      [
-        "title" => "Mapping & Geospatial",
-        "slug" => "mapping-geospatial",
-        "description" => "CHCNAV creates advanced hardware and software solutions for mapping and geospatial mass data acquisition, processing, and maintenance. Our lidar and airborne drones reflect the latest developments in laser scanning technology and meet the accelerating demand for smart city applications worldwide.",
-        "image" => null,
-        "created_at" => "2024-09-06T22:18:43.000Z",
-        "updated_at" => "2024-09-06T22:18:43.000Z"
-      ]
-    ];
+            [
+                "title" => "Surveying & Engineering",
+                "slug" => "surveying-engineering",
+                "description" => "Teknologi dan perangkat lunak GNSS untuk posisi presisi tinggi dalam survei dan konstruksi",
+                "image" => "industries/2025/06/01JY10QPMXD4BM9N7M845GBGYN.jpg",
+                "created_at" => "2024-09-04 18:45:13",
+                "updated_at" => "2025-06-18 14:58:24"
+            ],
+            [
+                "title" => "3D Mobile Mapping",
+                "slug" => "3d-mobile-mapping",
+                "description" => "Teknologi LiDAR, pencitraan, dan UAV untuk tangkapan realitas 3D yang memukau dari darat maupun udara.",
+                "image" => "industries/2025/06/01JY10N5YG12T3QGW4M9JE0A4Q.jpg",
+                "created_at" => "2025-06-18 07:26:30",
+                "updated_at" => "2025-06-18 14:57:22"
+            ]
+        ];
 
     foreach ($industries as $data) {
       Industry::create([

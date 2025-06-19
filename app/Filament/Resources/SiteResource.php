@@ -82,6 +82,7 @@ class SiteResource extends Resource
           ->label('Deskripsi')
           ->wrap()
           ->lineClamp(2)
+          ->html()
           ->searchable(),
       ])
       ->filters([
