@@ -63,7 +63,7 @@
         </div>
         <div class="w-full md:w-1/4 h-full flex flex-col gap-4">
           <p class="text-lg text-slate-700">{{ $item->description }}</p>
-          <a href="/new/produk/{{ $item->slug }}"
+          <a href="/produk/{{ $item->slug }}"
             class="border-b-2 w-fit flex items-center gap-2 hover:gap-3 duration-200 text-slate-600 hover:text-slate-800">
             <span>Jelajah Produk</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none"
