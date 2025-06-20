@@ -1,7 +1,6 @@
 @php
   $sites = App\Models\Site::get()->keyBy('slug');
   $industry = App\Models\Industry::limit(5)->get();
-  // product
 @endphp
 
 <!DOCTYPE html>
@@ -15,7 +14,6 @@
   <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
   <title>INDONAV | Bangun Dunia Cerdas dengan Solusi Presisi dari INDONAV</title>
   @vite(['resources/css/app.css', 'resources/js/app.js'])
-
   <!-- Info -->
   <meta name="title" content="Bangun Dunia Cerdas dengan Solusi Presisi dari INDONAV">
   <meta name="description"
@@ -24,8 +22,6 @@
   <meta name="keywords"
     content="smarter precision, mapping solutions, positioning solutions, navigation solutions, geospatial technologies, gnss, lidar, usv, uav, machine control, digital construction, excavators, dozers, graders, hybrid gnss ins, unmanned systems, robotics, autonomous driving, precision agriculture, autosteering systems, chc navigation, innovation, indonav">
   <meta name="author" content="indonav">
-
-  {{-- Push for meta/seo/etc/js --}}
   @stack('header')
 
 </head>
