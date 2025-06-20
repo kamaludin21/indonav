@@ -124,7 +124,7 @@
   </div>
 
   {{-- Other Product Section --}}
-  <div class="bg-white max-w-screen-lg px-2 md:px-0 mx-auto py-16">
+  {{-- <div class="bg-white max-w-screen-lg px-2 md:px-0 mx-auto py-16">
     <p class="text-4xl text-orange-600 font-bold mb-16">Other Product</p>
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -186,5 +186,5 @@
       </div>
 
     </div>
-  </div>
+  </div> --}}
 @endsection
