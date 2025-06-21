@@ -1,5 +1,5 @@
 <?php
-
+Artisan::call('storage:link');
 use App\Http\Controllers\IndustryController;
 use Illuminate\Support\Facades\Route;
 
