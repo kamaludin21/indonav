@@ -6,7 +6,7 @@ Route::get('/industries/{slug}', [IndustryController::class, 'view'])->name('ind
 
 Route::get('foo', function(){
     $targetFolder = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public';
-    $linkFolder = $_SERVER['DOCUMENT_ROOT'].'/storage';
+    $linkFolder = $_SERVER['DOCUMENT_ROOT'].'/public/storage';
     symlink($targetFolder, $linkFolder);
     return 'success';
 });
