@@ -31,11 +31,11 @@
         </p>
       </div>
       @foreach ($products as $item)
-        <div class="w-full h-72 bg-slate-200 flex flex-col items-center justify-center rounded-2xl group">
-          <img src="{{ asset('storage/' . $item->image_product) }}" class="w-1/2 group-hover:scale-110 duration-200"
+        <div class="w-full h-72 bg-slate-200 p-2 flex flex-col items-center justify-center rounded-2xl group">
+          <img src="{{ asset('storage/' . $item->image_product) }}" class="w-2/3 md:w-1/2 group-hover:scale-125 duration-200"
             alt="{{ $item->title }}">
           <a href="/produk/{{ $item->slug }}">
-            <p class="text-xl text-slate-700 hover:underline font-medium">{{ $item->title }}</p>
+            <p class="text-2xl text-center text-slate-700 hover:underline font-medium line-clamp-2">{{ $item->title }}</p>
           </a>
         </div>
       @endforeach

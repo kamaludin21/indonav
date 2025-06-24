@@ -28,8 +28,8 @@
         @forelse  ($products as $item)
           <div class="bg-white grid justify-items-center gap-4 flex flex-col w-full p-4 hover:rounded-lg items-center">
             <img src="{{ asset('storage/' . $item->image_product) }}" class="w-2/3" alt="{{ $item->title }}">
-            <p class="text-lg font-semibold tracking-wide text-slate-700">{{ $item->title }}</p>
-            <p class="text-base font-normal tracking-wide text-slate-600 text-center">{{ $item->description }}</p>
+            <p class="text-lg font-semibold tracking-wide text-slate-700 line-clamp-2">{{ $item->title }}</p>
+            <p class="text-base font-normal tracking-wide text-slate-600 text-center line-clamp-2">{{ $item->description }}</p>
             <a href="/produk/{{ $item->slug }}"
               class="w-fit border border-orange-600 text-orange-600 hover:text-white hover:bg-orange-600 duration-200 px-3 py-0.5 uppercase rounded-full">
               <span class="text-sm font-medium">

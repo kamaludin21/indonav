@@ -76,7 +76,25 @@ class SiteSeeder extends Seeder
         "description" => "<p>INDONAV merupakan mitra resmi CHCNAV di Indonesia, siap memberikan solusi dan pelayanan optimal bagi pelanggan di seluruh Indonesia.</p>",
         "created_at" => "2025-06-18 15:14:29",
         "updated_at" => "2025-06-18 15:14:29"
-      ]
+      ],
+      [
+        "title" => "Intro Box",
+        "slug" => "intro-box",
+        "url" => null,
+        "image" => null,
+        "description" => "<p>Jelajahi berbagai produk GNSS presisi tinggi kami, dimana performa bertemu dengan keandalan</p>",
+        "created_at" => "2025-06-18 15:14:29",
+        "updated_at" => "2025-06-18 15:14:29"
+      ],
+      [
+        "title" => "Wa link",
+        "slug" => "wa-link",
+        "url" => "https://api.whatsapp.com/send?phone=6285220278856",
+        "image" => null,
+        "description" => "<p>Link whatsapp</p>",
+        "created_at" => "2025-06-18 15:14:29",
+        "updated_at" => "2025-06-18 15:14:29"
+      ],
     ];
 
 

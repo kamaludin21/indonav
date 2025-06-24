@@ -51,7 +51,7 @@
     <div class="max-w-screen-lg px-2 md:px-0 mx-auto py-16">
       <div class="flex flex-wrap justify-between items-center relative">
         <div class="order-2 md:order-1 grid gap-2 w-full md:w-1/2 z-10">
-          <p class="text-5xl font-bold text-slate-800">{{ $product->title }}</p>
+          <p class="text-5xl font-bold text-slate-800 ">{{ $product->title }}</p>
           <p class="text-2xl font-light line-clamp-2 text-slate-700">{{ $product->description }}</p>
         </div>
         <div class="z-10 order-1 md:order-2 flex justify-center w-full md:w-fit">
@@ -90,8 +90,8 @@
       rounded-lg">
           <img src="{{ asset('storage/' . $item['image']) }}" class="h-32 w-32 bg-cover rounded-lg"
             alt="{{ $item['title'] }}">
-          <p class="text-2xl font-semibold text-slate-800">{{ $item['title'] }}</p>
-          <p class="text-normal text-center text-slate-700">{{ $item['description'] }}</p>
+          <p class="text-2xl font-semibold text-slate-800 line-clamp-2">{{ $item['title'] }}</p>
+          <p class="text-normal text-center text-slate-700 line-clamp-2">{{ $item['description'] }}</p>
         </div>
       @endforeach
     </div>

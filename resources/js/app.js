@@ -1,13 +1,12 @@
-// import "/resources/js/bootstrap.js";
+import "/resources/js/bootstrap.js";
 import * as FilePond from "/node_modules/.vite/deps/filepond.js?v=8040da14";
 import "/node_modules/filepond/dist/filepond.min.css";
 
 // Run after the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
   // === CSRF Token from Laravel ===
-  const csrfToken = document
-    .querySelector('meta[name="csrf-token"]')
-    .getAttribute("content");
+  const csrfMeta = document.querySelector('meta[name="csrf-token"]');
+  const csrfToken = csrfMeta ? csrfMeta.getAttribute("content") : null;
 
   if (!csrfToken) {
     console.warn("⚠️ CSRF token not found in meta tag.");

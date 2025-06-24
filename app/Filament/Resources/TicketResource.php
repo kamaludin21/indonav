@@ -5,9 +5,11 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\TicketResource\Pages;
 use App\Filament\Resources\TicketResource\RelationManagers;
 use App\Models\Ticket;
+use App\Models\TicketCategory;
 use Filament\Forms;
 use Filament\Forms\Components\{TextInput, Textarea, Select, FileUpload};
 use Filament\Forms\Form;
+
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Section;
 use Filament\Tables;
@@ -22,6 +24,7 @@ class TicketResource extends Resource
   protected static ?string $model = Ticket::class;
 
   protected static ?string $navigationIcon = 'heroicon-o-inbox-arrow-down';
+  protected static ?int $navigationSort = 1;
 
   public static function form(Form $form): Form
   {
@@ -69,15 +72,7 @@ class TicketResource extends Resource
         Select::make('ticket_category')
           ->label('Kategori Tiket')
           ->required()
-          ->options([
-            'permintaan penawaran harga' => 'Permintaan Penawaran Harga (Quotation)',
-            'dukungan teknis' => 'Dukungan Teknis',
-            'permintaan demo produk' => 'Permintaan Demo Produk',
-            'konsultasi proyek' => 'Konsultasi Proyek',
-            'kerja sama partnering' => 'Kerja Sama/Partnering',
-            'komplain laporan masalah' => 'Komplain/Laporan Masalah',
-            'lainnya' => 'Lainnya',
-          ])
+          ->options(TicketCategory::pluck('title', 'title'))
           ->placeholder('Pilih Kategori'),
         TextInput::make('subject')
           ->label('Judul Permintaan')

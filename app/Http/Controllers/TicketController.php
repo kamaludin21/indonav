@@ -57,7 +57,8 @@ class TicketController extends Controller
 
       $ticket->save();
 
-     return redirect('/pemesanan')->with('success');
+      return redirect('/pemesanan')->with('success', 'Terima kasih! Formulir Anda sudah berhasil kami terima dan saat ini sedang diproses oleh tim kami.
+                Silakan tunggu, kami akan segera menghubungi Anda melalui email yang telah Anda daftarkan.');
     } catch (\Exception $e) {
       Log::error('Ticket creation failed: ' . $e->getMessage());
       return redirect()->back()->withErrors(['error' => 'Failed to create ticket. Please try again.'])->withInput();

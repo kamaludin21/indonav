@@ -1,5 +1,6 @@
 @php
   $sites = App\Models\Site::get()->keyBy('slug');
+  $category = App\Models\TicketCategory::get();
 @endphp
 
 @extends('layouts.app-v2', ['activePage' => 'pemesanan'])
@@ -29,7 +30,7 @@
           <p>Setelah mengirim formulir ini, Anda akan menerima nomor tiket dan update status melalui email. </p>
           @if (session('success'))
             <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mt-4" role="alert">
-              <p>Terima kasih! Formulir Anda sudah berhasil kami terima dan saat ini sedang diproses oleh tim kami. Silakan tunggu, kami akan segera menghubungi Anda melalui email yang telah Anda daftarkan.</p>
+              <p>{{ session('success') }}</p>
             </div>
           @endif
           @if (session('error'))
@@ -73,13 +74,9 @@
           <select id="option" name="ticket_category" class="border-2 rounded-lg p-2 focus:outline-none w-full"
             required>
             <option>Pilih Kategori</option>
-            <option value="permintaan penawaran harga">Permintaan Penawaran Harga (Quotation)</option>
-            <option value="dukungan teknis">Dukungan Teknis</option>
-            <option value="permintaan demo produk">Permintaan Demo Produk</option>
-            <option value="konsultasi proyek">Konsultasi Proyek</option>
-            <option value="kerja sama partnering">Kerja Sama/Partnering</option>
-            <option value="komplain laporan masalah">Komplain/Laporan Masalah</option>
-            <option value="lainnya">Lainnya</option>
+            @foreach ($category as $item)
+              <option value="{{ $item->title }}">{{ $item->title }}</option>
+            @endforeach
           </select>
         </div>
         <div class="space-y-0">
