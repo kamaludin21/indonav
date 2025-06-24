@@ -1,7 +1,9 @@
 @php
   $sites = App\Models\Site::get()->keyBy('slug');
   $industry = App\Models\Industry::limit(5)->get();
-  $products = App\Models\Product::orderByDesc('created_at')->limit(5)->get(); // orderby newest created_at/updated_at
+  $products = App\Models\Product::orderByDesc('created_at')->limit(5)->get();
+  $partners = App\Models\Partner::orderBy('order', 'asc')->get();
+  $chunks = $partners->chunk(5);
 @endphp
 
 @extends('layouts.app-v2', ['activePage' => 'home'])
@@ -79,50 +81,39 @@
     @endforeach
   </div>
   <hr>
-  <div class="max-w-screen-lg px-2 md:px-0 mx-auto py-16">
-    <p class="text-3xl text-slate-800 font-medium text-center">Mengapa Memilih Kami</p>
-    <div class="flex flex-wrap justify-center">
-      <div class="w-1/2 md:w-1/3 flex flex-col items-center gap-4 md:gap-6 justify-center h-56 md:h-72">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-24 w-24 text-orange-600">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M15 15m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-          <path d="M13 17.5v4.5l2 -1.5l2 1.5v-4.5" />
-          <path d="M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -1 1.73" />
-          <path d="M6 9l12 0" />
-          <path d="M6 12l3 0" />
-          <path d="M6 15l2 0" />
-        </svg>
-        <p class="text-xl font-medium text-slate-700 whitespace-nowrap">Mitra Resmi</p>
-      </div>
-      <div class="w-1/2 md:w-1/3 items-center flex flex-col items-center gap-4 md:gap-6 justify-center h-56 md:h-72">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-24 w-24 text-orange-600">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M10 10h4v4h-4z" />
-          <path d="M10 10l-3.5 -3.5" />
-          <path d="M9.96 6a3.5 3.5 0 1 0 -3.96 3.96" />
-          <path d="M14 10l3.5 -3.5" />
-          <path d="M18 9.96a3.5 3.5 0 1 0 -3.96 -3.96" />
-          <path d="M14 14l3.5 3.5" />
-          <path d="M14.04 18a3.5 3.5 0 1 0 3.96 -3.96" />
-          <path d="M10 14l-3.5 3.5" />
-          <path d="M6 14.04a3.5 3.5 0 1 0 3.96 3.96" />
-        </svg>
-        <p class="text-xl font-medium text-slate-700 whitespace-nowrap">Kualitas Terbaik</p>
-      </div>
-      <div class="w-1/2 md:w-1/3 items-center flex flex-col items-center gap-4 md:gap-6 justify-center h-56 md:h-72">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-24 w-24 text-orange-600">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path
-            d="M15.721 11.067l-3.721 -8.067l-7.97 17.275c-.07 .2 -.017 .424 .135 .572c.15 .148 .374 .193 .57 .116l5.614 -1.903" />
-          <path
-            d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296z" />
-        </svg>
-        <p class="text-xl font-medium text-slate-700 whitespace-nowrap">Dukungan Pelanggan</p>
-      </div>
+  {{-- Infinite Slider --}}
+  <div class="py-16 no-scrollbar">
+    <div class="pb-10 capitalize">
+      <p class="text-3xl text-slate-800 font-medium text-center">our trusted partner</p>
     </div>
+    @foreach ($chunks as $index => $chunk)
+      @php
+        $shouldReverse = $index % 2 === 1;
+      @endphp
+
+      <div class="h-36 w-full overflow-hidden" id="slidable-content-{{ $index + 1 }}">
+        <div class="relative h-auto w-full">
+
+          <div class="absolute hidden md:block z-40 h-full w-24 bg-gradient-to-r from-white to-transparent"></div>
+          <ul class="infinite-translate flex h-full w-[200%] {{ $shouldReverse ? 'reverse' : '' }}">
+            @for ($i = 0; $i < 3; $i++)
+              @foreach ($chunk as $item)
+                <li
+                  class="flex w-1/6 md:w-1/6 flex-none items-center justify-center px-4 md:px-6 ring-inset hover:ring-2 ring-orange-600">
+                  <a href="{{ $item->url ?? '#' }}" target="_blank"
+                    class="flex items-center justify-center h-full w-full">
+                    <img class="h-10 sm:h-12 md:h-14 object-contain" src="{{ asset('storage/' . $item->image) }}"
+                      alt="{{ $item->title }}">
+                  </a>
+                </li>
+              @endforeach
+            @endfor
+          </ul>
+          <div class="absolute hidden md:block right-0 top-0 z-40 h-full w-24 bg-gradient-to-l from-white to-transparent">
+          </div>
+        </div>
+      </div>
+    @endforeach
   </div>
   <hr>
   <div class="max-w-screen-lg px-2 md:px-0 mx-auto py-16 grid gap-8">

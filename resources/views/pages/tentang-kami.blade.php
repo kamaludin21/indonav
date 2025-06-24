@@ -31,7 +31,7 @@
           <p class="text-lg font-medium text-slate-700">Ikuti kami</p>
         </div>
         <a href="{!! $sites['linkedin']?->url !!}" target="_blank">
-          <div class="py-1 border-b border-slate-300 flex w-full items-center justify-between">
+          <div class="py-1 border-b border-slate-300 hover:bg-orange-50 duration-200 flex w-full items-center justify-between">
             <p class="text-base text-slate-700">Linkedin</p>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-4 h-4 text-orange-600">
@@ -40,7 +40,7 @@
           </div>
         </a>
         <a href="{!! $sites['instagram']?->url !!}" target="_blank">
-          <div class="py-1 border-b border-slate-300 flex w-full items-center justify-between">
+          <div class="py-1 border-b border-slate-300 hover:bg-orange-50 duration-200 flex w-full items-center justify-between">
             <p class="text-base text-slate-700">Instagram</p>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-4 h-4 text-orange-600">

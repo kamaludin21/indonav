@@ -47,7 +47,7 @@ class IndustryResource extends Resource
         FileUpload::make('image')
           ->label('Gambar')
           ->maxSize(1024)
-          ->directory('/industries/' . date('Y/m'))
+          ->directory('industries/')
           ->image()
           ->imageEditor()
           ->openable()

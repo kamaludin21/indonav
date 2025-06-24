@@ -26,8 +26,20 @@
 
 </head>
 
-<body class="w-full bg-slate-50">
-  <nav class="bg-white border-b border-slate-200 py-4">
+<body class="w-full bg-slate-50 relative">
+  {{-- Whatsapp me --}}
+  <a href="{!! $sites['wa-link']?->url !!}"
+    class="fixed right-5 md:right-10 bottom-5 md:bottom-10 p-2 rounded-lg ring-1 hover:ring-2 duration-200 ring-white bg-green-600 cursor-pointer z-[55]"
+    target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"
+      class="h-10 md:h-14 w-auto text-white">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+      <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+    </svg>
+  </a>
+  <nav class="bg-white border-b border-slate-200  py-4 sticky top-0 z-50">
     <div class="max-w-screen-lg px-2 md:px-0 mx-auto">
       <div class="flex justify-between items-center relative">
         {{-- Brand --}}
@@ -68,8 +80,8 @@
           </li>
         </ul>
 
-        {{-- Menu nav desktop --}}
-        <div id="mobile-menu" class="hidden md:hidden absolute bg-white w-full h-svh top-16 right-0">
+        {{-- Menu nav mobile --}}
+        <div id="mobile-menu" class="hidden md:hidden absolute bg-white w-full h-svh top-[3.65rem] py-2 right-0 z-50">
           <div class="h-fit w-full border border-slate-200 bg-white p-4 rounded-lg grid ">
             <ul class="text-lg grid gap-2">
               <li
@@ -90,7 +102,7 @@
               </li>
             </ul>
             <div class="flex gap-2 mt-6">
-              <a href="/kontak" class="w-full bg-orange-500 px-3 py-1 rounded-full flex justify-center">
+              <a href="/pemesanan" class="w-full bg-orange-500 px-3 py-1 rounded-full flex justify-center">
                 <span class="font-medium text-sm text-slate-100 text-center">Pemesanan</span>
               </a>
             </div>
@@ -98,10 +110,9 @@
           </div>
         </div>
 
-
         {{-- CTA --}}
         <div class="hidden md:flex items-center gap-4">
-          <a href="/kontak" class="bg-orange-500 px-3 py-1 rounded-full">
+          <a href="/pemesanan" class="bg-orange-500 px-3 py-1 rounded-full">
             <span class="font-medium text-sm text-slate-100">Pemesanan</span>
           </a>
         </div>
@@ -114,7 +125,7 @@
   <footer class="text-white w-full bg-slate-800">
 
     {{-- Wrapper --}}
-    <div class="max-w-screen-lg px-2 md:px-0 mx-auto py-16">
+    <div class="max-w-screen-lg px-2 md:px-0 mx-auto pt-16 pb-6">
       {{-- Info --}}
       <div class="flex flex-col md:flex-row gap-2 justify-between items-center md:items-start">
         <div class="grid gap-2">

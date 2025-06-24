@@ -43,8 +43,8 @@
           <p class="text-slate-700 font-medium">{{ strip_tags($sites['alamat']?->description) }}</p>
         </div>
       </div>
-      <div class="order-1 md:order-2 w-full md:w-1/2">
-        <img src="{{ asset('img/hello-robot.png') }}" class="w-1/2 mx-auto" alt="">
+      <div class="order-1 md:order-2 w-full md:w-1/3 flex justify-center md:justify-end">
+        <img src="{{ asset('img/hello-robot.png') }}" class="w-1/4 md:w-1/2" alt="indonav mascot">
       </div>
     </div>
   </div>
