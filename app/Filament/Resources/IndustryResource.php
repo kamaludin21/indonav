@@ -7,6 +7,7 @@ use App\Models\Industry;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Forms\Set;
 use Filament\Resources\Resource;
@@ -28,6 +29,7 @@ class IndustryResource extends Resource
       ->schema([
         Textarea::make('title')
           ->autosize()
+          ->rows(1)
           ->label('Judul')
           ->maxLength(250)
           ->live(onBlur: true)
@@ -42,9 +44,29 @@ class IndustryResource extends Resource
           ->readOnly(),
         Textarea::make('description')
           ->autosize()
+          ->rows(1)
           ->label('Keterangan')
           ->maxLength(300),
-        FileUpload::make('image')
+        // FileUpload::make('image')
+        //   ->label('Gambar')
+        //   ->maxSize(1024)
+        //   ->directory('industries')
+        //   ->image()
+        //   ->imageEditor()
+        //   ->openable()
+        //   ->downloadable()
+        //   ->helperText('Maksimal ukuran file 1024 kb atau 1 mb'),
+        Select::make('media_type')
+          ->label('Media Type')
+          ->options([
+            'image' => 'Image',
+            'video' => 'YouTube Video',
+          ])
+          ->required()
+          ->reactive(),
+
+        // Image uploader when "image" is selected
+        FileUpload::make('media_image')
           ->label('Gambar')
           ->maxSize(1024)
           ->directory('industries')
@@ -52,7 +74,13 @@ class IndustryResource extends Resource
           ->imageEditor()
           ->openable()
           ->downloadable()
-          ->helperText('Maksimal ukuran file 1024 kb atau 1 mb'),
+          ->helperText('Maksimal ukuran file 1024 kb atau 1 mb')
+          ->visible(fn($get) => $get('media_type') === 'image'),
+
+        // YouTube URL input when "video" is selected
+        TextInput::make('media_video')
+          ->label('YouTube Video URL')
+          ->visible(fn($get) => $get('media_type') === 'video'),
       ]);
   }
 

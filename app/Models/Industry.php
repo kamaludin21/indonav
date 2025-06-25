@@ -14,10 +14,38 @@ class Industry extends Model
 
   protected $fillable = [
     'title',
-    'slug',
     'description',
-    'image'
+    'slug',
+    'image',
+    'media_type',
   ];
+
+  protected $appends = ['embed_url'];
+
+  public function getEmbedUrlAttribute()
+  {
+    // if ($this->media_type === 'video' && $this->image) {
+    //   // Extract YouTube video ID
+    //   preg_match('/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^\s&]+)/', $this->image, $matches);
+    //   $videoId = $matches[1] ?? null;
+    //   return $videoId ? "https://www.youtube.com/embed/{$videoId}?controls=0&rel=0&autoplay=1&loop=1" : null;
+    // }
+    // return null;
+    if ($this->media_type === 'video' && $this->image) {
+      // Extract YouTube video ID
+      preg_match('/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^\s&]+)/', $this->image, $matches);
+      $videoId = $matches[1] ?? null;
+
+      if (!$videoId) {
+        return null;
+      }
+
+      // Autoplay + Loop require playlist param with same video ID
+      return "https://www.youtube.com/embed/{$videoId}?controls=0&rel=0&autoplay=1&loop=1&playlist={$videoId}";
+    }
+
+    return null;
+  }
 
   public function products(): HasMany
   {

@@ -67,7 +67,15 @@
           <p class="text-5xl text-slate-800 font-semibold">{{ $item->title }}</p>
         </div>
         <div class="flex-1 w-full md:w-2/4 h-80">
-          <img class="w-full h-full bg-cover" src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}">
+          @if ($item->media_type === 'video' && $item->embed_url)
+            <iframe class="min-h-56 w-full h-full" src="{{ $item->embed_url }}" title="YouTube video player" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+            </iframe>
+          @elseif ($item->media_type === 'image' && $item->image)
+            <img class="min-h-56  w-full h-full object-cover" src="{{ asset('storage/' . $item->image) }}"
+              alt="{{ $item->title }}">
+          @endif
         </div>
         <div class="w-full md:w-1/4 h-full flex flex-col gap-4">
           <p class="text-lg text-slate-700">{{ $item->description }}</p>
