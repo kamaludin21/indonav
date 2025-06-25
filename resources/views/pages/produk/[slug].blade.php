@@ -90,8 +90,8 @@
       rounded-lg">
           <img src="{{ asset('storage/' . $item['image']) }}" class="h-32 w-32 bg-cover rounded-lg"
             alt="{{ $item['title'] }}">
-          <p class="text-2xl font-semibold text-slate-800 line-clamp-2">{{ $item['title'] }}</p>
-          <p class="text-normal text-center text-slate-700 line-clamp-2">{{ $item['description'] }}</p>
+          <p class="text-2xl font-semibold text-slate-800 line-clamp-2 text-center">{{ $item['title'] }}</p>
+          <p class="text-normal text-center text-slate-700">{{ $item['description'] }}</p>
         </div>
       @endforeach
     </div>
@@ -103,7 +103,7 @@
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
       @foreach ($product->specifications as $item)
         <div class="border border-slate-400 bg-white rounded-lg p-4">
-          <p>{{ $item['title'] }}</p>
+          <p class="text-lg font-slate-600 font-medium">{{ $item['title'] }}</p>
           <div class="h-4"></div>
           <a href="{{ asset('storage/' . $item['document']) }}"
             class="flex w-fit gap-2 bg-orange-600 text-white px-2 py-1 rounded-md" target="_blank">
