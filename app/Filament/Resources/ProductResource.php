@@ -54,6 +54,7 @@ class ProductResource extends Resource
           ->readOnly(),
         Textarea::make('description')
           ->autosize()
+          ->rows(1)
           ->label('Keterangan Pendek')
           ->maxLength(300),
           FileUpload::make('image_product')
@@ -86,7 +87,7 @@ class ProductResource extends Resource
               ->downloadable()
               ->helperText('Maksimal ukuran file 1000KB atau 1MB'),
             TextInput::make('title'),
-            Textarea::make('description')->autosize(),
+            Textarea::make('description')->autosize()->rows(1),
           ]),
         Repeater::make('specifications')
           ->schema([

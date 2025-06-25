@@ -34,6 +34,7 @@ class SiteResource extends Resource
       ->schema([
         Textarea::make('title')
           ->autosize()
+          ->rows(1)
           ->disabledOn('edit')
           ->label('Judul')
           ->maxLength(250)

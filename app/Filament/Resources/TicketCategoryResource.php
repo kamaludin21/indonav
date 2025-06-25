@@ -29,9 +29,11 @@ class TicketCategoryResource extends Resource
       ->schema([
         Textarea::make('title')
           ->label('Judul')
+          ->rows(1)
           ->maxLength(250)
           ->required(),
         Textarea::make('description')
+          ->rows(1)
           ->label('Keterangan'),
       ]);
   }

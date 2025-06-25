@@ -45,6 +45,8 @@ class TicketResource extends Resource
               ])
               ->placeholder('Pilih Status'),
             Textarea::make('note')
+              ->autosize()
+              ->rows(1)
               ->label('Catatan untuk Tindak Lanjut / Respon Admin')
               ->placeholder('Tulis catatan khusus dari admin terkait tiket ini (misalnya: status update, tindakan yang diambil, atau informasi tambahan lainnya).')->columnSpanFull(),
           ]),
@@ -82,6 +84,8 @@ class TicketResource extends Resource
         Textarea::make('description')
           ->label('Deskripsi Permintaan')
           ->required()
+          ->autosize()
+          ->rows(1)
           ->disabledOn('edit')
           ->placeholder('Tulis secara detail kebutuhan Anda, termasuk produk, lokasi, jadwal, kendala, dsb.'),
         FileUpload::make('attachment')

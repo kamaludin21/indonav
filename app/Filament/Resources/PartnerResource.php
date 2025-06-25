@@ -33,6 +33,7 @@ class PartnerResource extends Resource
       ->schema([
         Textarea::make('title')
           ->autosize()
+          ->rows(1)
           ->label('Judul')
           ->maxLength(250)
           ->required(),
