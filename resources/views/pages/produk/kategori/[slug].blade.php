@@ -6,6 +6,24 @@
 
 @extends('layouts.app-v2', ['activePage' => 'produk'])
 
+@push('header')
+  <title>{{ $getIndustry->title }} | INDONAV</title>
+  <meta name="title" content="{{ $getIndustry->title }} | INDONAV">
+  <meta name="description"
+    content="Temukan beragam produk solusi pemetaan dan survei dari INDONAV untuk kebutuhan Surveying & Engineering.">
+  <meta name="keywords"
+    content="surveying, engineering, pemetaan, GNSS, total station, geospasial, solusi survei, indonav, CHC Navigation">
+
+  <meta property="og:title" content="{{ $getIndustry->title }} | INDONAV">
+  <meta property="og:description" content="Solusi presisi tinggi untuk dunia {{ $getIndustry->title }} dari INDONAV.">
+  <meta property="og:url" content="{{ url()->current() }}">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="{{ asset('storage/' . $getIndustry->image) }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="INDONAV">
+@endpush
+
 @section('content')
   <div class="bg-slate-100">
     <div class="max-w-screen-lg px-2 md:px-0 mx-auto py-16">
@@ -29,7 +47,8 @@
           <div class="bg-white grid justify-items-center gap-4 flex flex-col w-full p-4 hover:rounded-lg items-center">
             <img src="{{ asset('storage/' . $item->image_product) }}" class="w-2/3" alt="{{ $item->title }}">
             <p class="text-lg font-semibold tracking-wide text-slate-700 line-clamp-2">{{ $item->title }}</p>
-            <p class="text-base font-normal tracking-wide text-slate-600 text-center line-clamp-2">{{ $item->description }}</p>
+            <p class="text-base font-normal tracking-wide text-slate-600 text-center line-clamp-2">
+              {{ $item->description }}</p>
             <a href="/produk/{{ $item->slug }}"
               class="w-fit border border-orange-600 text-orange-600 hover:text-white hover:bg-orange-600 duration-200 px-3 py-0.5 uppercase rounded-full">
               <span class="text-sm font-medium">

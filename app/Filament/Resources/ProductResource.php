@@ -59,7 +59,7 @@ class ProductResource extends Resource
           FileUpload::make('image_product')
           ->label('Gambar Produk')
           ->maxSize(1024)
-          ->directory('products/')
+          ->directory('products')
           ->image()
           ->openable()
           ->downloadable()
@@ -69,7 +69,7 @@ class ProductResource extends Resource
         FileUpload::make('image_highlight')
           ->label('Gambar Ilustrasi')
           ->maxSize(1024)
-          ->directory('products/highlight/')
+          ->directory('products/highlight')
           ->image()
           ->openable()
           ->downloadable()
@@ -95,7 +95,7 @@ class ProductResource extends Resource
               ->maxSize(5120)
               ->openable()
               ->downloadable()
-              ->directory('products/documents/')
+              ->directory('products/documents')
               ->helperText('Maksimal ukuran file 5000KB atau 5MB'),
             TextInput::make('title'),
           ]),

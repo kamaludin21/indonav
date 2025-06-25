@@ -12,18 +12,13 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
   <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-  <title>INDONAV | Bangun Dunia Cerdas dengan Solusi Presisi dari INDONAV</title>
+
   @vite(['resources/css/app.css', 'resources/js/app.js'])
-  <!-- Info -->
-  <meta name="title" content="Bangun Dunia Cerdas dengan Solusi Presisi dari INDONAV">
-  <meta name="description"
-    content="Temukan solusi inovatif CHC Navigation untuk kebutuhan geospasial, konstruksi, navigasi, dan pertanian.">
+  @stack('header')
+  <meta name="author" content="INDONAV">
   <meta name="image" content="{{ asset('img/og_image-indonav.jpg') }}">
   <meta name="keywords"
     content="smarter precision, mapping solutions, positioning solutions, navigation solutions, geospatial technologies, gnss, lidar, usv, uav, machine control, digital construction, excavators, dozers, graders, hybrid gnss ins, unmanned systems, robotics, autonomous driving, precision agriculture, autosteering systems, chc navigation, innovation, indonav">
-  <meta name="author" content="indonav">
-  @stack('header')
-
 </head>
 
 <body class="w-full bg-slate-50 relative">

@@ -39,7 +39,7 @@ class PartnerResource extends Resource
         FileUpload::make('image')
           ->label('Gambar')
           ->maxSize(1024)
-          ->directory('partner/')
+          ->directory('partner')
           ->image()
           ->imageEditor()
           ->openable()

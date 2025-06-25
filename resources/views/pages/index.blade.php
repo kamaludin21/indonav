@@ -9,6 +9,11 @@
 @extends('layouts.app-v2', ['activePage' => 'home'])
 
 @push('header')
+  <title>INDONAV | Bangun Dunia Cerdas dengan Solusi Presisi dari INDONAV</title>
+  <meta name="title" content="Bangun Dunia Cerdas dengan Solusi Presisi dari INDONAV">
+  <meta name="description"
+    content="Temukan solusi inovatif CHC Navigation untuk kebutuhan geospasial, konstruksi, navigasi, dan pertanian.">
+
   <meta property="og:title" content="Build a Smart World with INDONAV Precision Solutions ">
   <meta property="og:description"
     content="Discover CHC Navigation’s innovative solutions for geospatial, construction, navigation and agriculture.">
@@ -32,10 +37,11 @@
       </div>
       @foreach ($products as $item)
         <div class="w-full h-72 bg-slate-200 p-2 flex flex-col items-center justify-center rounded-2xl group">
-          <img src="{{ asset('storage/' . $item->image_product) }}" class="w-2/3 md:w-1/2 group-hover:scale-125 duration-200"
-            alt="{{ $item->title }}">
+          <img src="{{ asset('storage/' . $item->image_product) }}"
+            class="w-2/3 md:w-1/2 group-hover:scale-125 duration-200" alt="{{ $item->title }}">
           <a href="/produk/{{ $item->slug }}">
-            <p class="text-2xl text-center text-slate-700 hover:underline font-medium line-clamp-2">{{ $item->title }}</p>
+            <p class="text-2xl text-center text-slate-700 hover:underline font-medium line-clamp-2">{{ $item->title }}
+            </p>
           </a>
         </div>
       @endforeach

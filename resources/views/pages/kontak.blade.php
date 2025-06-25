@@ -5,6 +5,10 @@
 @extends('layouts.app-v2', ['activePage' => 'kontak'])
 
 @push('header')
+<title>Kontak | INDONAV</title>
+  <meta name="title" content="Bangun Dunia Cerdas dengan Solusi Presisi dari INDONAV">
+  <meta name="description"
+    content="Temukan solusi inovatif CHC Navigation untuk kebutuhan geospasial, konstruksi, navigasi, dan pertanian.">
   <meta property="og:title" content="Build a Smart World with INDONAV Precision Solutions ">
   <meta property="og:description"
     content="Discover CHC Navigation’s innovative solutions for geospatial, construction, navigation and agriculture.">

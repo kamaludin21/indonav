@@ -5,6 +5,23 @@
 
 @extends('layouts.app-v2', ['activePage' => 'produk'])
 
+@push('header')
+  <title>INDONAV | Bangun Dunia Cerdas dengan Solusi Presisi dari INDONAV</title>
+  <meta name="title" content="Bangun Dunia Cerdas dengan Solusi Presisi dari INDONAV">
+  <meta name="description"
+    content="Temukan solusi inovatif CHC Navigation untuk kebutuhan geospasial, konstruksi, navigasi, dan pertanian.">
+
+  <meta property="og:title" content="Build a Smart World with INDONAV Precision Solutions ">
+  <meta property="og:description"
+    content="Discover CHC Navigation’s innovative solutions for geospatial, construction, navigation and agriculture.">
+  <meta property="og:url" content="https://www.indonavtech.co.id/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="{{ asset('img/og_image-indonav.jpg') }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Indonav">
+@endpush
+
 @section('content')
   <div class="bg-slate-100">
     <div class="max-w-screen-lg px-2 md:px-0 mx-auto py-16">

@@ -5,6 +5,10 @@
 @extends('layouts.app-v2', ['activePage' => 'about'])
 
 @push('header')
+  <title>Tentang Kami | INDONAV</title>
+  <meta name="title" content="Bangun Dunia Cerdas dengan Solusi Presisi dari INDONAV">
+  <meta name="description"
+    content="Temukan solusi inovatif CHC Navigation untuk kebutuhan geospasial, konstruksi, navigasi, dan pertanian.">
   <meta property="og:title" content="Build a Smart World with INDONAV Precision Solutions ">
   <meta property="og:description"
     content="Discover CHC Navigation’s innovative solutions for geospatial, construction, navigation and agriculture.">
@@ -18,7 +22,6 @@
 
 
 @section('content')
-
   {{-- Section 3 --}}
   <div class="max-w-screen-lg px-2 md:px-0 mx-auto py-16 grid gap-8">
     <div>
@@ -31,7 +34,8 @@
           <p class="text-lg font-medium text-slate-700">Ikuti kami</p>
         </div>
         <a href="{!! $sites['linkedin']?->url !!}" target="_blank">
-          <div class="py-1 border-b border-slate-300 hover:bg-orange-50 duration-200 flex w-full items-center justify-between">
+          <div
+            class="py-1 border-b border-slate-300 hover:bg-orange-50 duration-200 flex w-full items-center justify-between">
             <p class="text-base text-slate-700">Linkedin</p>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-4 h-4 text-orange-600">
@@ -40,7 +44,8 @@
           </div>
         </a>
         <a href="{!! $sites['instagram']?->url !!}" target="_blank">
-          <div class="py-1 border-b border-slate-300 hover:bg-orange-50 duration-200 flex w-full items-center justify-between">
+          <div
+            class="py-1 border-b border-slate-300 hover:bg-orange-50 duration-200 flex w-full items-center justify-between">
             <p class="text-base text-slate-700">Instagram</p>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-4 h-4 text-orange-600">

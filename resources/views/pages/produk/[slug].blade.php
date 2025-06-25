@@ -9,9 +9,12 @@
 @extends('layouts.app-v2', ['activePage' => 'produk'])
 
 @push('header')
-  {{-- TODO: Replace with product information --}}
+  <title>{{ $product->title }} | INDONAV</title>
+  <meta name="description"
+    content="{{ $product->description }}">
+
   <meta property="og:title" content="{{ $product->title }}">
-  <meta property="og:description" content="{{ $product->description }}">
+  <meta property="og:description" content="">
   <meta property="og:url" content="https://www.indonavtech.co.id/produk/{{ $product->slug }}">
   <meta property="og:type" content="website">
   <meta property="og:image" content="{{ asset('storage/' . $product->image_highlight) }}">
