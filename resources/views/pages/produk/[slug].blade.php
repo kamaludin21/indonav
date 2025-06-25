@@ -55,7 +55,7 @@
           <p class="text-2xl font-light line-clamp-2 text-slate-700">{{ $product->description }}</p>
         </div>
         <div class="z-10 order-1 md:order-2 flex justify-center w-full md:w-fit">
-          <img src="{{ asset('img/product1.png') }}" class="w-5/6 md:w-72 h-auto" alt="">
+          <img src="{{ asset('storage/' . $product->image_product) }}" class="w-5/6 md:w-72 h-auto" alt="">
         </div>
         {{-- Absolute el: hidden sm:block  --}}
         <div class="absolute top-0 sm:top-2/3 w-full z-0 overflow-hidden">
