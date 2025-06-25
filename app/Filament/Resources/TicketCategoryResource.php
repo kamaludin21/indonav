@@ -48,15 +48,6 @@ class TicketCategoryResource extends Resource
           ->searchable(),
         TextColumn::make('description')
           ->label('Keterangan'),
-      ])
-      ->actions([
-
-        Tables\Actions\EditAction::make(),
-      ])
-      ->bulkActions([
-        Tables\Actions\BulkActionGroup::make([
-          Tables\Actions\DeleteBulkAction::make(),
-        ]),
       ]);
   }
 
