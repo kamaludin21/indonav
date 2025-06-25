@@ -86,7 +86,7 @@ class ProductResource extends Resource
               ->downloadable()
               ->helperText('Maksimal ukuran file 1000KB atau 1MB'),
             TextInput::make('title'),
-            TextInput::make('description'),
+            Textarea::make('description')->autosize(),
           ]),
         Repeater::make('specifications')
           ->schema([
