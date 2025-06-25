@@ -88,7 +88,7 @@ class TicketResource extends Resource
           ->label('Lampiran File (opsional)')
           ->downloadable()
           ->disabledOn('edit')
-          ->directory('lampiran-tiket')
+          ->directory('lampiran-tiket/')
           ->acceptedFileTypes([
             'image/*',
             'application/pdf',
