@@ -38,7 +38,7 @@ class ProductObserver
 
     // Check and delete old feature images
     if ($product->isDirty('features')) {
-      $oldFeatures = json_decode($product->getOriginal('features'), true);
+      $oldFeatures = $product->getOriginal('features');
       foreach ($oldFeatures as $feature) {
         if (!empty($feature['image']) && Storage::disk('public')->exists($feature['image'])) {
           Storage::disk('public')->delete($feature['image']);
@@ -48,7 +48,7 @@ class ProductObserver
 
     // Check and delete old specification documents
     if ($product->isDirty('specifications')) {
-      $oldSpecs = json_decode($product->getOriginal('specifications'), true);
+      $oldSpecs = $product->getOriginal('specifications');
       foreach ($oldSpecs as $spec) {
         if (!empty($spec['document']) && Storage::disk('public')->exists($spec['document'])) {
           Storage::disk('public')->delete($spec['document']);
