@@ -25,7 +25,7 @@
 
 @section('content')
   {{-- Section 3 --}}
-  <div class="max-w-screen-lg px-2 md:px-0 mx-auto py-16 grid gap-8">
+  <div class="max-w-screen-lg px-2 lg:px-0 mx-auto py-16 grid gap-8">
 
     <div class="flex flex-col md:flex-row items-start gap-4">
       <div class="flex-1 space-y-2 flex items-end md:items-start">

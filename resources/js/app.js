@@ -1,6 +1,6 @@
-import "/resources/js/bootstrap.js";
-import * as FilePond from "/node_modules/.vite/deps/filepond.js?v=8040da14";
-import "/node_modules/filepond/dist/filepond.min.css";
+import "./bootstrap.js"; // relative path assuming it's in resources/js
+import * as FilePond from "filepond";
+import "filepond/dist/filepond.min.css";
 
 // Run after the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
@@ -20,15 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
       name: "attachment",
       allowRevert: true,
       acceptedFileTypes: [
-        ".jpg",
-        ".jpeg",
-        ".png",
-        ".gif",
-        ".pdf",
-        ".doc",
-        ".docx",
-        ".xls",
-        ".xlsx",
+        ".jpg", ".jpeg", ".png", ".gif", ".pdf",
+        ".doc", ".docx", ".xls", ".xlsx"
       ],
       labelFileTypeNotAllowed: "Jenis file tidak didukung",
       labelIdle:
@@ -63,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (menuButton && mobileMenu) {
     menuButton.addEventListener("click", () => {
       const isHidden = mobileMenu.classList.toggle("hidden");
-
       if (!isHidden) {
         body.classList.add("overflow-hidden");
       } else {
