@@ -44,7 +44,7 @@
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
         @forelse  ($products as $item)
-          <div class="bg-white grid justify-items-center gap-4 flex flex-col w-full p-4 hover:rounded-lg items-center">
+          <div class="bg-white grid justify-items-center gap-4 w-full p-4 hover:rounded-lg items-center">
             <img src="{{ asset('storage/' . $item->image_product) }}" class="w-2/3" alt="{{ $item->title }}">
             <p class="text-lg font-semibold tracking-wide text-slate-700 line-clamp-2">{{ $item->title }}</p>
             <p class="text-base font-normal tracking-wide text-slate-600 text-center line-clamp-2">
