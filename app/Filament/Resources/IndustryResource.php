@@ -21,7 +21,7 @@ class IndustryResource extends Resource
   protected static ?string $model = Industry::class;
 
   protected static ?string $navigationIcon = 'heroicon-o-home-modern';
-  protected static ?int $navigationSort = 4;
+  protected static ?int $navigationSort = 3;
 
   public static function form(Form $form): Form
   {
