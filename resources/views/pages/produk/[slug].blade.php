@@ -10,8 +10,7 @@
 
 @push('header')
   <title>{{ $product->title }} | INDONAV</title>
-  <meta name="description"
-    content="{{ $product->description }}">
+  <meta name="description" content="{{ $product->description }}">
 
   <meta property="og:title" content="{{ $product->title }}">
   <meta property="og:description" content="{{ $product->description }}">
@@ -101,44 +100,32 @@
   </div>
 
   {{-- Feature Section --}}
-  <div class="max-w-screen-lg px-2 md:px-0 mx-auto py-16" id="download">
-    <p class="text-4xl text-orange-600 font-bold text-center mb-16">Spesifikasi</p>
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-      @foreach ($product->specifications as $item)
-        <div class="border border-slate-400 bg-white rounded-lg p-4">
-          <p class="text-lg font-slate-600 font-medium">{{ $item['title'] }}</p>
-          <div class="h-4"></div>
-          <a href="{{ asset('storage/' . $item['document']) }}"
-            class="flex w-fit gap-2 bg-orange-600 text-white px-2 py-1 rounded-md" target="_blank">
-            <span>UNDUH</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
-              <path d="M7 11l5 5l5 -5" />
-              <path d="M12 4l0 12" />
-            </svg>
-          </a>
-        </div>
-      @endforeach
-
-      {{-- <div class="border border-slate-400 bg-white rounded-lg p-4">
-        <p>i89_EN.pdf</p>
-        <p>2.40 MB</p>
-        <div class="h-4"></div>
-        <button class="flex gap-2 bg-orange-600 text-white px-2 py-1 rounded-md">
-          <span>UNDUH</span>
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
-            <path d="M7 11l5 5l5 -5" />
-            <path d="M12 4l0 12" />
-          </svg>
-        </button>
-      </div> --}}
+  @if (!empty($product->specifications) && is_array($product->specifications))
+    <div class="max-w-screen-lg px-2 md:px-0 mx-auto py-16" id="download">
+      <p class="text-4xl text-orange-600 font-bold text-center mb-16">Spesifikasi</p>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        @foreach ($product->specifications as $item)
+          @php
+            $extension = pathinfo($item['document'], PATHINFO_EXTENSION);
+          @endphp
+          <div class="border border-slate-400 bg-white rounded-lg p-4">
+            <p class="text-lg font-slate-600 font-medium">{{ $item['title'] }}.{{ $extension }}</p>
+            <a href="{{ asset('storage/' . $item['document']) }}"
+              class="flex w-fit gap-2 bg-orange-600 text-white px-2 py-1 rounded-md" target="_blank">
+              <span>UNDUH</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+                <path d="M7 11l5 5l5 -5" />
+                <path d="M12 4l0 12" />
+              </svg>
+            </a>
+          </div>
+        @endforeach
+      </div>
     </div>
-  </div>
+  @endif
 
   {{-- Other Product Section --}}
   <div class="bg-white max-w-screen-lg px-2 md:px-0 mx-auto py-16">

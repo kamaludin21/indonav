@@ -1,6 +1,8 @@
 @php
   $sites = App\Models\Site::get()->keyBy('slug');
-  $products = App\Models\Product::get();
+  $products = App\Models\Product::whereNotNull('specifications')
+      ->whereRaw('JSON_LENGTH(specifications) > 0')
+      ->paginate(2);
 @endphp
 
 @extends('layouts.app-v2', ['activePage' => ''])
@@ -30,27 +32,33 @@
     </div>
     @foreach ($products as $item)
       <div class="bg-white border-2 border-slate-200 rounded-lg shadow-md p-4 flex flex-col justify-between">
-        <div>
-          <h3 class="text-xl font-semibold text-slate-800 mb-4">{{ $item->name }}</h3>
+        <div class="space-y-4 ">
+          <h3 class="text-xl font-semibold text-slate-700 mb-4">{{ $item->title }}</h3>
+          <hr>
           @if (is_array($item->specifications))
             @foreach ($item->specifications as $specs)
-              <p class="text-lg font-medium">{{ $specs['title'] }}</p>
+              <div class="space-y-0">
+                <p class="text-lg text-slate-600 font-medium">{{ $specs['title'] }}</p>
+                <a href="{{ asset('storage/' . $item['document']) }}" target="_blank"
+                  class="mt-4 inline-flex items-center w-full justify-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                  </svg>
+                  Download
+                </a>
+              </div>
             @endforeach
           @else
             <p class="text-slate-600">Data dokumen kosong</p>
           @endif
         </div>
-        <a href="#"
-          class="mt-4 inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
-          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-          </svg>
-          Download
-        </a>
       </div>
     @endforeach
+    <div class="">
+      {{ $products->links() }}
+    </div>
   </div>
   <hr>
 @endsection

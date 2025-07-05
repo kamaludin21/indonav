@@ -1,7 +1,7 @@
 @php
   $industry = App\Models\Industry::get();
   $getIndustry = App\Models\Industry::where('slug', $slug)->firstOrFail();
-  $products = App\Models\Product::where('industry_id', $getIndustry->id)->get();
+  $products = App\Models\Product::where('industry_id', $getIndustry->id)->paginate(8);
 @endphp
 
 @extends('layouts.app-v2', ['activePage' => 'produk'])
@@ -26,7 +26,7 @@
 
 @section('content')
   <div class="bg-slate-100">
-    <div class="max-w-screen-lg px-2 md:px-0 mx-auto py-16">
+    <div class="max-w-screen-lg px-2 md:px-0 mx-auto py-16 space-y-4">
       <p class="text-4xl text-orange-600 font-bold mb-10">Semua Produk</p>
       <div class="border-y border-slate-300 py-3 mb-4 md:mb-6">
         <ul class="flex flex-wrap gap-4 text-sm font-normal text-slate-700">
@@ -63,8 +63,9 @@
             <p class="text-sm">Silakan cek kategori lainnya.</p>
           </div>
         @endforelse
-
-
+      </div>
+      <div class="">
+        {{ $products->links() }}
       </div>
     </div>
   </div>

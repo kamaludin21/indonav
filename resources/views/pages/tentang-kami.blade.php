@@ -22,8 +22,7 @@
 
 
 @section('content')
-  {{-- Section 3 --}}
-  <div class="max-w-screen-lg px-2 md:px-0 mx-auto py-16 grid gap-8">
+  <div class="max-w-screen-lg px-2 md:px-0 mx-auto py-16 md:py-28 grid gap-8">
     <div>
       <p class="text-5xl text-slate-800 font-bold">Tentang Kami</p>
     </div>
@@ -59,6 +58,10 @@
         {!! $sites['tentang-kami']?->description !!}
       </div>
     </div>
+
+    <div class="flex justify-center py-10">
+      <img src="{{ asset('img/indonav.png') }}" class="w-3/4 sm:w-1/2 h-auto" alt="">
+    </div>
+
   </div>
-  <hr>
 @endsection
