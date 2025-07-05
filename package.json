@@ -14,7 +14,6 @@
         "vite": "^5.0"
     },
     "dependencies": {
-        "filepond": "^4.32.8",
-        "swiper": "^11.1.12"
+        "filepond": "^4.32.8"
     }
 }

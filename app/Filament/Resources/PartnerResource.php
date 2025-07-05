@@ -24,7 +24,7 @@ class PartnerResource extends Resource
   protected static ?string $model = Partner::class;
 
   protected static ?string $navigationIcon = 'heroicon-o-swatch';
-  protected static ?int $navigationSort = 6;
+  protected static ?int $navigationSort = 5;
 
 
   public static function form(Form $form): Form

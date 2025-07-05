@@ -25,7 +25,7 @@
 @section('content')
   {{-- Product Nav --}}
   <div class="py-5 bg-slate-800 text-slate-100 w">
-    <div class="flex gap-2 flex-wrap justify-between items-center max-w-screen-lg px-2 md:px-0 mx-auto">
+    <div class="flex gap-2 flex-wrap justify-between items-center max-w-screen-lg px-2 lg:px-0 mx-auto">
       <p class="text-lg font-medium">{{ $product->title }}</p>
       <div>
         <ul class="flex gap-2 tracking-wide text-sm font-light uppercase">
@@ -50,7 +50,7 @@
   </div>
   {{-- Product header --}}
   <div class="w-full bg-slate-200">
-    <div class="max-w-screen-lg px-2 md:px-0 mx-auto py-16">
+    <div class="max-w-screen-lg px-2 lg:px-0 mx-auto py-16">
       <div class="flex flex-wrap justify-between items-center relative">
         <div class="order-2 md:order-1 grid gap-2 w-full md:w-1/2 z-10">
           <p class="text-5xl font-bold text-slate-800 ">{{ $product->title }}</p>
@@ -68,7 +68,7 @@
   </div>
 
   {{-- Highlight section --}}
-  <div class="max-w-screen-lg px-2 md:px-0 mx-auto py-16" id="highlight">
+  <div class="max-w-screen-lg px-2 lg:px-0 mx-auto py-16" id="highlight">
     <p class="text-4xl text-orange-600 font-bold">Highlight</p>
     <hr class="my-4">
     <div class="flex flex-col md:flex-row items-start gap-6">
@@ -84,7 +84,7 @@
   </div>
 
   {{-- Feature Section --}}
-  <div class="max-w-screen-lg px-2 md:px-0 mx-auto py-16" id="features">
+  <div class="max-w-screen-lg px-2 lg:px-0 mx-auto py-16" id="features">
     <p class="text-4xl text-orange-600 font-bold text-center mb-16">Fitur Utama</p>
     <div class="flex flex-wrap justify-center gap-16">
       @foreach ($product->features as $item)
@@ -128,7 +128,7 @@
   @endif
 
   {{-- Other Product Section --}}
-  <div class="bg-white max-w-screen-lg px-2 md:px-0 mx-auto py-16">
+  <div class="bg-white max-w-screen-lg px-2 lg:px-0 mx-auto py-16">
     <p class="text-4xl text-orange-600 font-bold mb-16">Produk Lainnya</p>
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8">

@@ -35,7 +35,7 @@
     </svg>
   </a>
   <nav class="bg-white border-b border-slate-200  py-4 sticky top-0 z-50">
-    <div class="max-w-screen-lg px-2 md:px-0 mx-auto">
+    <div class="max-w-screen-lg px-2 lg:px-0 mx-auto">
       <div class="flex justify-between items-center relative">
         {{-- Brand --}}
         <a href="/">
@@ -120,7 +120,7 @@
   <footer class="text-white w-full bg-slate-800">
 
     {{-- Wrapper --}}
-    <div class="max-w-screen-lg px-2 md:px-0 mx-auto pt-16 pb-6">
+    <div class="max-w-screen-lg px-2 lg:px-0 mx-auto pt-16 pb-6">
       {{-- Info --}}
       <div class="flex flex-col md:flex-row gap-2 justify-between items-center md:items-start">
         <div class="grid gap-2">
