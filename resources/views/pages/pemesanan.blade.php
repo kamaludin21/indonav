@@ -43,7 +43,7 @@
             </div>
           @endif
         </div>
-        <img src="{{ asset('img/doc-robot.png') }}" class="w-1/3 h-auto ml-auto" alt="">
+        <img src="{{ asset('img/pemesanan.png') }}" class="w-1/3 h-auto ml-auto" alt="">
       </div>
       <form class="grid gap-4 border rounded-xl p-4 w-full md:w-1/2" action="{{ route('tickets.store') }}" method="post">
         @csrf

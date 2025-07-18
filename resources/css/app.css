@@ -39,13 +39,14 @@
   scrollbar-width: none; /* Hide scrollbar for Firefox */
 }
 
+.infinite-translate.reverse {
+  animation-direction: reverse;
+}
+
+
 .infinite-translate {
   animation: full-translate 20s linear infinite;
   display: flex;
-}
-
-.infinite-translate.reverse {
-  animation-direction: reverse;
 }
 
 .infinite-translate:hover {

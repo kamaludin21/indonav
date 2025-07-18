@@ -3,7 +3,6 @@
   $industry = App\Models\Industry::limit(5)->get();
   $products = App\Models\Product::orderByDesc('created_at')->limit(5)->get();
   $partners = App\Models\Partner::orderBy('order', 'asc')->get();
-  $chunks = $partners->chunk(5);
 @endphp
 
 @extends('layouts.app-v2', ['activePage' => 'home'])
@@ -119,32 +118,27 @@
     <div class="pb-10 md:pb-16 capitalize">
       <p class="text-3xl text-slate-800 font-medium text-center">our trusted partner</p>
     </div>
-    @foreach ($chunks as $index => $chunk)
-      @php
-        $shouldReverse = $index % 2 === 1;
-      @endphp
-      <div class="h-36 w-full overflow-hidden" id="slidable-content-{{ $index + 1 }}">
-        <div class="relative h-auto w-full">
-          <div class="absolute hidden md:block z-40 h-full w-24 bg-gradient-to-r from-white to-transparent"></div>
-          <ul class="infinite-translate flex h-full w-[200%] {{ $shouldReverse ? 'reverse' : '' }}">
-            @for ($i = 0; $i < 3; $i++)
-              @foreach ($chunk as $item)
-                <li
-                  class="flex w-1/6 md:w-1/6 flex-none items-center justify-center px-4 md:px-6 ring-inset hover:ring-2 ring-orange-600">
-                  <a href="{{ $item->url ?? '#' }}" target="_blank"
-                    class="flex items-center justify-center h-full w-full">
-                    <img class="h-10 sm:h-12 md:h-14 object-contain" src="{{ asset('storage/' . $item->image) }}"
-                      alt="{{ $item->title }}">
-                  </a>
-                </li>
-              @endforeach
-            @endfor
-          </ul>
-          <div class="absolute hidden md:block right-0 top-0 z-40 h-full w-24 bg-gradient-to-l from-white to-transparent">
-          </div>
+    <div class="h-36 w-full overflow-hidden" id="slidable-content">
+      <div class="relative h-auto w-full">
+        <div class="absolute hidden md:block z-40 h-full w-24 bg-gradient-to-r from-white to-transparent"></div>
+        <ul class="infinite-translate flex h-full w-[200%]">
+          @for ($i = 0; $i < 3  ; $i++)
+            {{-- Repeat to create seamless animation --}}
+            @foreach ($partners as $item)
+              <li
+                class="flex w-1/6 md:w-1/6 flex-none items-center justify-center px-4 md:px-6 ring-inset hover:ring-2 ring-orange-600">
+                <a href="{{ $item->url ?? '#' }}" target="_blank" class="flex items-center justify-center h-full w-full">
+                  <img class="h-10 sm:h-12 md:h-14 object-contain" src="{{ asset('storage/' . $item->image) }}"
+                    alt="{{ $i }} {{ $item->title }}">
+                </a>
+              </li>
+            @endforeach
+          @endfor
+        </ul>
+        <div class="absolute hidden md:block right-0 top-0 z-40 h-full w-24 bg-gradient-to-l from-white to-transparent">
         </div>
       </div>
-    @endforeach
+    </div>
   </div>
   <hr>
   <div class="max-w-screen-lg px-2 lg:px-0 mx-auto py-16 md:py-28 grid gap-8">
@@ -158,7 +152,8 @@
           <p class="text-lg font-medium text-slate-700">Ikuti kami</p>
         </div>
         <a href="{!! $sites['linkedin']?->url !!}" target="_blank">
-          <div class="py-1 border-b border-slate-300 hover:bg-orange-50 duration-200 flex w-full items-center justify-between cursor-pointer">
+          <div
+            class="py-1 border-b border-slate-300 hover:bg-orange-50 duration-200 flex w-full items-center justify-between cursor-pointer">
             <p class="text-base text-slate-700">Linkedin</p>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-4 h-4 text-orange-600">
@@ -167,7 +162,8 @@
           </div>
         </a>
         <a href="{!! $sites['instagram']?->url !!}" target="_blank">
-          <div class="py-1 border-b border-slate-300 hover:bg-orange-50 duration-200 flex w-full items-center justify-between cursor-pointer">
+          <div
+            class="py-1 border-b border-slate-300 hover:bg-orange-50 duration-200 flex w-full items-center justify-between cursor-pointer">
             <p class="text-base text-slate-700">Instagram</p>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-4 h-4 text-orange-600">

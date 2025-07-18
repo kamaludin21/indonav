@@ -23,7 +23,7 @@
 
 <body class="w-full bg-slate-50 relative">
   {{-- Whatsapp me --}}
-  <a href="{!! $sites['wa-link']?->url !!}"
+  {{-- <a href="{!! $sites['wa-link']?->url !!}"
     class="fixed right-5 md:right-10 bottom-5 md:bottom-10 p-2 rounded-lg ring-1 hover:ring-2 duration-200 ring-white bg-green-600 cursor-pointer z-[55]"
     target="_blank">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -33,7 +33,7 @@
       <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
       <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
     </svg>
-  </a>
+  </a> --}}
   <nav class="bg-white border-b border-slate-200  py-4 sticky top-0 z-50">
     <div class="max-w-screen-lg px-2 lg:px-0 mx-auto">
       <div class="flex justify-between items-center relative">
@@ -97,8 +97,19 @@
               </li>
             </ul>
             <div class="flex gap-2 mt-6">
-              <a href="/pemesanan" class="w-full bg-orange-500 px-3 py-1 rounded-full flex justify-center">
-                <span class="font-medium text-sm text-slate-100 text-center">Pemesanan</span>
+              <a href="/pemesanan" class="w-full bg-orange-500 px-3 py-1 rounded-full flex items-center justify-center">
+                <span class="font-medium text-sm text-slate-100 text-center">PEMESANAN</span>
+              </a>
+              <a href="{!! $sites['wa-link']?->url !!}" target="_blank"
+                class="flex-1 w-full hover:bg-slate-200 active:scale-95 p-1.5 rounded-full flex items-center px-4">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="h-7 w-7 text-green-600">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+                  <path
+                    d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+                </svg>
+                <span>Whatsapp</span>
               </a>
             </div>
 
@@ -106,9 +117,19 @@
         </div>
 
         {{-- CTA --}}
-        <div class="hidden md:flex items-center gap-4">
-          <a href="/pemesanan" class="bg-orange-500 px-3 py-1 rounded-full">
-            <span class="font-medium text-sm text-slate-100">Pemesanan</span>
+        <div class="hidden md:flex items-center gap-1">
+          <a href="/pemesanan" class="bg-orange-500 px-4 py-1 rounded-full">
+            <span class="font-medium text-sm text-slate-100">PEMESANAN</span>
+          </a>
+          <a href="{!! $sites['wa-link']?->url !!}" target="_blank"
+            class="w-full hover:bg-slate-200 active:scale-95 p-1.5 rounded-full">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" class="h-7 w-7 text-green-600">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+              <path
+                d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+            </svg>
           </a>
         </div>
       </div>

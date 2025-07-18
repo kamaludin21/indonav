@@ -31,7 +31,7 @@
       <div class="border-y border-slate-300 py-3 mb-4 md:mb-6">
         <ul class="flex flex-wrap gap-4 text-sm font-normal text-slate-700">
           <li class="hover:underline underline-offset-2">
-            <a href="/produk">Semua Produk</a>
+            <a href="/produk">Semua Kategori</a>
           </li>
           @foreach ($industry as $item)
             <li class="hover:underline underline-offset-2">
