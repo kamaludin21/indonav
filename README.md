@@ -7,6 +7,6 @@ INDONAV adalah dealer resmi CHCNAV untuk wilayah Indonesia. Kami berkomitmen unt
 ## Revisi
 
 [✅] Pemindahan tombol whatsapp disebelah tombol pemesanan
-- Halaman awal produk tampilkan kategori sebelum produk
-- Tulisan kepala robot diganti ke indonav
-- Slider partner diubah jadi 1
+[✅] Halaman awal produk tampilkan kategori sebelum produk
+[✅] Tulisan kepala robot diganti ke indonav
+[✅] Slider partner diubah jadi 1

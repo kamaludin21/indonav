@@ -26,7 +26,7 @@
   <div class="bg-slate-100">
     <div class="max-w-screen-lg px-2 md:px-0 mx-auto py-16 space-y-4">
       <p class="text-4xl text-orange-600 font-bold mb-10">Jelajah Produk</p>
-      <div class="grid grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         @foreach ($industry as $item)
           <div class="flex h-full rounded border border-slate-300">
             <div class="w-1/2">
