@@ -32,4 +32,6 @@ Thumbs.db
 
 # Bun
 bun.lockb
+bun.lock
 .bun/
+composer.lock
