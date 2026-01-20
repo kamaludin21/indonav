@@ -29,3 +29,7 @@ yarn-error.log
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Bun
+bun.lockb
+.bun/
