@@ -1,4 +1,3 @@
-import "./bootstrap.js"; // relative path assuming it's in resources/js
 import * as FilePond from "filepond";
 import "filepond/dist/filepond.min.css";
 
@@ -20,8 +19,15 @@ document.addEventListener("DOMContentLoaded", () => {
       name: "attachment",
       allowRevert: true,
       acceptedFileTypes: [
-        ".jpg", ".jpeg", ".png", ".gif", ".pdf",
-        ".doc", ".docx", ".xls", ".xlsx"
+        ".jpg",
+        ".jpeg",
+        ".png",
+        ".gif",
+        ".pdf",
+        ".doc",
+        ".docx",
+        ".xls",
+        ".xlsx",
       ],
       labelFileTypeNotAllowed: "Jenis file tidak didukung",
       labelIdle:
@@ -45,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
   } else {
-    console.warn("⚠️ File input with class 'filepond' not found.");
+    console.warn("File input with class 'filepond' not found.");
   }
 
   // === Mobile Nav Toggle ===
