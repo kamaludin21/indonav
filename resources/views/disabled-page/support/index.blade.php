@@ -10,9 +10,5 @@
       <h2 class="text-2xl md:text-4xl font-bold text-orange-400">Support</h2>
       <p class="text-base md:text-xl text-slate-500"></p>
     </div>
-
-
-
-
   </div>
 @endsection

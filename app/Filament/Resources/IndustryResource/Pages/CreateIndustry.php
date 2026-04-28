@@ -12,7 +12,6 @@ class CreateIndustry extends CreateRecord
 
   protected function mutateFormDataBeforeCreate(array $data): array
   {
-    dd($data);
     $data['image'] = $data['media_type'] === 'image'
       ? $data['media_image'] ?? null
       : $data['media_video'] ?? null;

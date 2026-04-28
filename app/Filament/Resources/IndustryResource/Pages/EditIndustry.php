@@ -19,7 +19,6 @@ class EditIndustry extends EditRecord
 
   protected function mutateFormDataBeforeSave(array $data): array
   {
-    // dd($data);
     $data['image'] = $data['media_type'] === 'image'
       ? $data['media_image'] ?? null
       : $data['media_video'] ?? null;
@@ -31,7 +30,6 @@ class EditIndustry extends EditRecord
 
   protected function mutateFormDataBeforeFill(array $data): array
   {
-    // dd($data);
     if ($data['media_type'] === 'image') {
       $data['media_image'] = $data['image'];
     } elseif ($data['media_type'] === 'video') {

@@ -8,6 +8,12 @@ export default defineConfig({
       refresh: true,
     }),
   ],
+  server: {
+        cors: true, // Mengizinkan semua origin
+        hmr: {
+            host: 'localhost',
+        },
+    },
   optimizeDeps: {
     exclude: ["filepond"],
   },

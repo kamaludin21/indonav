@@ -1,0 +1,48 @@
+[
+  {
+    "title": "Beranda",
+    "url": "/",
+    "children": []
+  },
+  {
+    "title": "Produk",
+    "url": "/produk",
+    "children": [
+      { "title": "Surveying and Engineering", "url": "/produk/surveying-engineering" },
+      { "title": "3D Mobile Mapping", "url": "/produk/3d-mobile-mapping" },
+      { "title": "Marine Surveying", "url": "/produk/marine-surveying" }
+    ]
+  },
+  {
+    "title": "Layanan",
+    "url": "/layanan",
+    "children": [
+      { "title": "Foto Udara", "url": "/layanan/foto-udara" },
+      { "title": "LiDAR", "url": "/layanan/lidar-mapping" },
+      { "title": "3D Modelling", "url": "/layanan/3d-modelling" },
+      { "title": "Hidrografi", "url": "/layanan/hidrografi" },
+      { "title": "Service Alat", "url": "/layanan/service-alat" }
+    ]
+  },
+  {
+    "title": "Portofolio",
+    "url": "/portofolio",
+    "children": [
+      { "title": "Artikel", "url": "/portofolio/artikel" },
+      { "title": "Kaleidoskop Survey", "url": "/portofolio/kaleidoskop-survey" }
+    ]
+  },
+  {
+    "title": "Tentang Kami",
+    "url": "/tentang-kami",
+    "children": [
+      { "title": "Visi Misi", "url": "/tentang-kami/visi-misi" },
+      { "title": "Company Background", "url": "/tentang-kami/company-background" }
+    ]
+  },
+  {
+    "title": "Kontak",
+    "url": "/kontak",
+    "children": []
+  }
+]

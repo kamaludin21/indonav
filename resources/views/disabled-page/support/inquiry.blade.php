@@ -10,7 +10,6 @@
       <h2 class="text-2xl md:text-4xl font-bold text-orange-400">Send an Inquiry</h2>
       <p class="text-base md:text-xl text-slate-500">Discover what we can do for you</p>
     </div>
-
     <div>
       <form>
         <div class="mb-6 grid gap-6 md:grid-cols-2">

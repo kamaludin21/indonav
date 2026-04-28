@@ -57,7 +57,33 @@ class ProductResource extends Resource
           ->rows(1)
           ->label('Keterangan Pendek')
           ->maxLength(300),
-          FileUpload::make('image_product')
+        Select::make('tags')
+          ->searchable()
+          ->preload()
+          ->label('Bidang Produk')
+          ->relationship(
+            name: 'tags',
+            titleAttribute: 'name',
+          )
+          ->createOptionForm([
+            TextInput::make('name')
+              ->label('Tag')
+              ->placeholder('Tag')
+              ->maxLength(30)
+              ->helperText('Max: 30 Karakter')
+              ->live(onBlur: true)
+              ->unique()
+              ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
+            TextInput::make('slug')
+              ->label('Slug')
+              ->placeholder('Slug')
+              ->unique(ignoreRecord: true)
+              ->disabled()
+              ->dehydrated()
+              ->readOnly()
+              ->required(),
+          ]),
+        FileUpload::make('image_product')
           ->label('Gambar Produk')
           ->maxSize(1024)
           ->directory('products')
@@ -75,6 +101,17 @@ class ProductResource extends Resource
           ->openable()
           ->downloadable()
           ->helperText('Maksimal ukuran file 1000KB atau 1MB'),
+        Repeater::make('specifications')
+          ->schema([
+            FileUpload::make('document')
+              ->label('File')
+              ->maxSize(5120)
+              ->openable()
+              ->downloadable()
+              ->directory('products/documents')
+              ->helperText('Maksimal ukuran file 5000KB atau 5MB'),
+            TextInput::make('title'),
+          ]),
         Repeater::make('features')
           ->schema([
             FileUpload::make('image')
@@ -89,17 +126,7 @@ class ProductResource extends Resource
             TextInput::make('title'),
             Textarea::make('description')->autosize()->rows(1),
           ]),
-        Repeater::make('specifications')
-          ->schema([
-            FileUpload::make('document')
-              ->label('File')
-              ->maxSize(5120)
-              ->openable()
-              ->downloadable()
-              ->directory('products/documents')
-              ->helperText('Maksimal ukuran file 5000KB atau 5MB'),
-            TextInput::make('title'),
-          ]),
+
       ]);
   }
 

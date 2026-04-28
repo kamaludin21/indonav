@@ -12,6 +12,12 @@ return new class extends Migration
    */
   public function up(): void
   {
+    // TODO: buat tag untuk penanda: 
+    // {{-- 1. GPS Geodetic --}}
+    // {{-- 2. Drone Survey --}}
+    // {{-- 3. LiDAR --}}
+    // {{-- 4. SLAM --}}
+    // {{-- 5. Marine Surveying --}}
     Schema::create('products', function (Blueprint $table) {
       $table->id();
       $table->foreignIdFor(Industry::class)->constrained();
