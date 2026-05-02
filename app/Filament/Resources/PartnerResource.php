@@ -22,7 +22,7 @@ use Filament\Forms\Components\FileUpload;
 class PartnerResource extends Resource
 {
   protected static ?string $model = Partner::class;
-
+  protected static ?string $navigationGroup = 'Lainnya';
   protected static ?string $navigationIcon = 'heroicon-o-swatch';
   protected static ?int $navigationSort = 5;
 

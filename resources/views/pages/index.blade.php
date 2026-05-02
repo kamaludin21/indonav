@@ -1,23 +1,41 @@
 @php
   $sites = App\Models\Site::get()->keyBy('slug');
-  $industry = App\Models\Industry::limit(5)->get();
+  $industry = App\Models\Industry::orderBy('title', 'asc')->limit(5)->get();
   $products = App\Models\Product::orderByDesc('created_at')->limit(5)->get();
   $partners = App\Models\Partner::orderBy('order', 'asc')->get();
   $tags = App\Models\Tag::with([
       'products' => function ($q) {
           $q->limit(4);
       },
-  ]) ->limit(5)
+  ])
+      ->limit(5)
       ->get();
 @endphp
 
 @extends('layouts.app-v3', ['activePage' => 'home'])
 
+@push('header')
+  <title>INDONAV | Bangun Dunia Cerdas dengan Solusi Presisi dari INDONAV</title>
+  <meta name="title" content="Bangun Dunia Cerdas dengan Solusi Presisi dari INDONAV">
+  <meta name="description"
+    content="Temukan solusi inovatif CHC Navigation untuk kebutuhan geospasial, konstruksi, navigasi, dan pertanian.">
+
+  <meta property="og:title" content="Build a Smart World with INDONAV Precision Solutions ">
+  <meta property="og:description"
+    content="Discover CHC Navigation’s innovative solutions for geospatial, construction, navigation and agriculture.">
+  <meta property="og:url" content="https://indonavtech.co.id/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="{{ asset('img/og_image-indonav.jpg') }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Indonav">
+@endpush
+
 @section('content')
   {{-- Buat overlay video  --}}
   <section class="relative h-screen w-full overflow-hidden">
     <video autoplay muted loop playsinline class="absolute z-0 min-w-full min-h-full object-cover">
-      <source src="{{ asset('videos/view_karimun.mp4') }}" type="video/mp4">
+      <source src="{{ asset('videos/indonav.mp4') }}" type="video/mp4">
       Your browser does not support the video tag.
     </video>
 
@@ -32,13 +50,14 @@
           Solusi survei darat, laut, dan udara terintegrasi dengan teknologi terkini dan layanan profesional akurat.
         </p>
         <div class="flex gap-4 justify-center">
-          <button class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-semibold transition">
+          <a href="{!! $sites['wa-link']?->url !!}" target="_blank"
+            class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-semibold transition">
             Mulai Konsultasi
-          </button>
-          <button
+          </a>
+          <a href="/portofolio/pengalaman" target="_blank"
             class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 px-8 py-3 rounded-full font-semibold transition">
             Pelajari Lebih Lanjut
-          </button>
+          </a>
         </div>
       </div>
     </div>
@@ -69,7 +88,7 @@
         <path d="M12 12l-8 -4.5" />
       </svg>
     </x-commons.line>
-    <x-commons.solutions />
+    <x-commons.solutions :industry="$industry" />
     <x-commons.line>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"
@@ -86,6 +105,6 @@
         <path d="M6 14.04a3.5 3.5 0 1 0 3.96 3.96" />
       </svg>
     </x-commons.line>
-    <x-commons.cta />
+    <x-commons.cta :wa="$sites['wa-link']" />
   </div>
 @endsection

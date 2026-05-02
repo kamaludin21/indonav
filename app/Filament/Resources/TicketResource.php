@@ -22,7 +22,7 @@ use Filament\Resources\Components\Tab;
 class TicketResource extends Resource
 {
   protected static ?string $model = Ticket::class;
-
+  protected static ?string $navigationGroup = 'Lainnya';
   protected static ?string $navigationIcon = 'heroicon-o-inbox-arrow-down';
   protected static ?int $navigationSort = 1;
 

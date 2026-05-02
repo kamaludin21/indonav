@@ -39,7 +39,6 @@ class Industry extends Model
       if (!$videoId) {
         return null;
       }
-
       // Autoplay + Loop require playlist param with same video ID
       return "https://www.youtube.com/embed/{$videoId}?controls=0&rel=0&autoplay=1&loop=1&playlist={$videoId}";
     }

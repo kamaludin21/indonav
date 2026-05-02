@@ -17,7 +17,7 @@ INDONAV adalah dealer resmi CHCNAV untuk wilayah Indonesia. Kami berkomitmen unt
 4. Our Partner ✔️
 5. Tentang Kami ✔️
 6. Informasi Kontak (Page) ✔️
-7. Produk (Page+Tag) ⏳
+7. Produk (Page+Bidang) ✔️
 8. Portofolio (Menu Navbar) ✔️
 9. Artikel List(Page) ⏳
 10. Artikel Detail (Page Detail) ⏳

@@ -6,6 +6,7 @@ use Filament\Enums\ThemeMode;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationGroup;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -57,9 +58,17 @@ class AdminPanelProvider extends PanelProvider
       ->authMiddleware([
         Authenticate::class,
       ])
+      ->navigationGroups([
+        NavigationGroup::make()->label('Produk'),
+        NavigationGroup::make()->label('Portofolio'),
+        NavigationGroup::make()->label('Lainnya'),
+        NavigationGroup::make()->label('Layanan'),
+        NavigationGroup::make()->label('Tentang Kami'),
+      ])
       ->plugins([
         FilamentEditProfilePlugin::make()
           ->setTitle('My Profile')
+          ->setNavigationGroup('Lainnya')
           ->setNavigationLabel('My Profile')
           ->setIcon('heroicon-o-user')
       ]);

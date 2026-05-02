@@ -11,4 +11,6 @@ class Developer extends Page
     protected static string $view = 'filament.pages.developer';
 
     protected static ?int $navigationSort = 7;
+    protected static ?string $navigationGroup = 'Lainnya';
+    
 }

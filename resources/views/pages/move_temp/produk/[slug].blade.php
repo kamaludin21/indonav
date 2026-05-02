@@ -14,7 +14,7 @@
 
   <meta property="og:title" content="{{ $product->title }}">
   <meta property="og:description" content="{{ $product->description }}">
-  <meta property="og:url" content="https://www.indonavtech.co.id/produk/{{ $product->slug }}">
+  <meta property="og:url" content="https://indonavtech.co.id/produk/{{ $product->slug }}">
   <meta property="og:type" content="website">
   <meta property="og:image" content="{{ asset('storage/' . $product->image_highlight) }}">
   <meta property="og:image:width" content="1200">

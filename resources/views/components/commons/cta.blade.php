@@ -1,8 +1,9 @@
-{{-- CTA --}}
-<div class="pt-24 pb-32 antialiased">
+@props(['wa'])
+
+<div class="pt-24 pb-32 antialiased px-2 md:px-0">
   <div
     class="relative overflow-hidden w-full max-w-6xl mx-auto bg-orange-500 rounded-[40px] shadow-xl min-h-[400px] flex items-center">
-    
+
     <div class="absolute inset-0 pointer-events-none">
       <div class="absolute -right-20 top-1/2 -translate-y-1/2 flex items-center justify-center">
         <div
@@ -33,7 +34,7 @@
         </p>
 
         <div class="flex items-center">
-          <a href="#"
+          <a href="{!! $wa->url !!}" target="_blank"
             class="group relative flex items-center gap-4 bg-black hover:bg-zinc-900 transition-colors py-4 pl-7 px-5 rounded-full shadow-lg">
             <span class="text-white font-semibold text-lg">Konsultasi dengan Kami</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"

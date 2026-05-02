@@ -19,7 +19,9 @@ use Illuminate\Support\Str;
 class IndustryResource extends Resource
 {
   protected static ?string $model = Industry::class;
-
+  protected static ?string $navigationGroup = 'Produk';
+  protected static ?string $navigationParentItem = 'Products';
+  protected static ?string $navigationLabel = 'Kategori Produk';
   protected static ?string $navigationIcon = 'heroicon-o-home-modern';
   protected static ?int $navigationSort = 3;
 

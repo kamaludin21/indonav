@@ -13,7 +13,7 @@
   <meta property="og:title" content="Build a Smart World with INDONAV Precision Solutions ">
   <meta property="og:description"
     content="Discover CHC Navigation’s innovative solutions for geospatial, construction, navigation and agriculture.">
-  <meta property="og:url" content="https://www.indonavtech.co.id/">
+  <meta property="og:url" content="https://indonavtech.co.id/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="{{ asset('img/og_image-indonav.jpg') }}">
   <meta property="og:image:width" content="1200">

@@ -14,7 +14,7 @@ export default defineConfig({
             host: 'localhost',
         },
     },
-  optimizeDeps: {
-    exclude: ["filepond"],
-  },
+  // optimizeDeps: {
+  //   exclude: ["filepond"],
+  // },
 });

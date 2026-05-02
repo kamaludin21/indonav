@@ -5,11 +5,29 @@
 
 @extends('layouts.app-v3', ['activePage' => 'layanan'])
 
+@push('header')
+  <title>Layanan | Bangun Dunia Cerdas dengan Solusi Presisi dari INDONAV</title>
+  <meta name="title" content="Bangun Dunia Cerdas dengan Solusi Presisi dari INDONAV">
+  <meta name="description"
+    content="Temukan solusi inovatif CHC Navigation untuk kebutuhan geospasial, konstruksi, navigasi, dan pertanian.">
+
+  <meta property="og:title" content="Build a Smart World with INDONAV Precision Solutions ">
+  <meta property="og:description"
+    content="Discover CHC Navigation’s innovative solutions for geospatial, construction, navigation and agriculture.">
+  <meta property="og:url" content="https://indonavtech.co.id/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="{{ asset('img/og_image-indonav.jpg') }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Indonav">
+@endpush
+
+
 @section('content')
   <div x-data="{ shown: false }" x-init="setTimeout(() => shown = true, 100)" class="mt-20 bg-slate-50 min-h-screen">
     {{-- Hero Section: Berbeda dengan sebelumnya (Lebih fokus ke objek/alat) --}}
     <section class="relative bg-white pt-20 pb-16 border-b border-gray-200 overflow-hidden">
-      <div class="container mx-auto px-6">
+      <div class="container mx-auto px-4 lg:px-0">
         <div class="flex flex-col lg:flex-row items-center">
           <div class="w-full lg:w-1/2 z-10" x-show="shown" x-transition:enter="transition ease-out duration-700">
             <span class="text-orange-600 font-bold tracking-widest text-sm uppercase">Maintenance & Calibration</span>
@@ -41,7 +59,7 @@
 
     {{-- Technical Detail Section --}}
     <section class="py-20">
-      <div class="container mx-auto px-6">
+      <div class="container mx-auto px-4 lg:px-0">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 ">
 
           {{-- Detail Fitur (Ubah urutan: Konten Utama dulu) --}}

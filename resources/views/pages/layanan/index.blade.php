@@ -3,7 +3,25 @@
   $services = App\Models\ServicePage::first();
 @endphp
 
-@extends('layouts.app-v3', ['activePage' => 'kontak'])
+@extends('layouts.app-v3', ['activePage' => 'layanan'])
+
+@push('header')
+  <title>Layanan | Bangun Dunia Cerdas dengan Solusi Presisi dari INDONAV</title>
+  <meta name="title" content="Bangun Dunia Cerdas dengan Solusi Presisi dari INDONAV">
+  <meta name="description"
+    content="Temukan solusi inovatif CHC Navigation untuk kebutuhan geospasial, konstruksi, navigasi, dan pertanian.">
+
+  <meta property="og:title" content="Build a Smart World with INDONAV Precision Solutions ">
+  <meta property="og:description"
+    content="Discover CHC Navigation’s innovative solutions for geospatial, construction, navigation and agriculture.">
+  <meta property="og:url" content="https://indonavtech.co.id/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="{{ asset('img/og_image-indonav.jpg') }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Indonav">
+@endpush
+
 
 @section('content')
   <div x-data="{ shown: false }" x-init="setTimeout(() => shown = true, 100)" class="bg-white font-sans text-gray-900">
@@ -37,7 +55,7 @@
 
 
     {{-- CONTENT --}}
-    <section class="max-w-screen-lg mx-auto bg-white py-16 lg:py-24">
+    <section class="max-w-screen-lg mx-auto bg-white py-16 lg:py-24 px-4 lg:px-0">
 
       <div class="flex flex-col items-start gap-12 lg:flex-row">
 
@@ -132,9 +150,9 @@
         <path d="M6 14.04a3.5 3.5 0 1 0 3.96 3.96" />
       </svg>
     </x-commons.line>
-    <div class="pt-24 pb-32 antialiased">
+    <div class="pt-24 pb-32 antialiased px-4">
       <div
-        class="relative overflow-hidden w-full max-w-6xl mx-auto bg-topo rounded-[40px] shadow-xl min-h-[400px] flex items-center">
+        class="relative overflow-hidden w-full max-w-6xl mx-auto bg-topo rounded-[40px] shadow-xl min-h-[400px] flex items-center ring-1 ring-orange-100">
 
         <div
           class="relative z-10 w-full px-8 py-16 md:px-16 flex flex-col md:flex-row justify-center items-center gap-10">

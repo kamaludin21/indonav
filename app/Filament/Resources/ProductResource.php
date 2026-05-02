@@ -22,7 +22,7 @@ use Filament\Tables\Table;
 class ProductResource extends Resource
 {
   protected static ?string $model = Product::class;
-
+  protected static ?string $navigationGroup = 'Produk';
   protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
   protected static ?int $navigationSort = 2;
 
@@ -58,8 +58,6 @@ class ProductResource extends Resource
           ->label('Keterangan Pendek')
           ->maxLength(300),
         Select::make('tags')
-          ->searchable()
-          ->preload()
           ->label('Bidang Produk')
           ->relationship(
             name: 'tags',
@@ -143,6 +141,8 @@ class ProductResource extends Resource
         TextColumn::make('industry.title')
           ->label('Kategori')
           ->searchable(),
+        TextColumn::make('tags.name')
+          ->label('Bidang'),
       ])
       ->actions([
         Tables\Actions\ActionGroup::make([

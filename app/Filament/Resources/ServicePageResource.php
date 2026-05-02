@@ -26,7 +26,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class ServicePageResource extends Resource
 {
     protected static ?string $model = ServicePage::class;
-
+    protected static ?string $navigationGroup = 'Layanan';
     protected static ?string $navigationIcon = 'heroicon-o-ticket';
 
     public static function form(Form $form): Form

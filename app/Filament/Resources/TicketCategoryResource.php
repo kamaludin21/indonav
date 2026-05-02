@@ -18,10 +18,9 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class TicketCategoryResource extends Resource
 {
   protected static ?string $model = TicketCategory::class;
-
+  protected static ?string $navigationParentItem = 'Ticket';
+  protected static ?string $navigationGroup = 'Lainnya';
   protected static ?string $navigationIcon = 'heroicon-o-tag';
-  protected static ?int $navigationSort = 6;
-
 
   public static function form(Form $form): Form
   {

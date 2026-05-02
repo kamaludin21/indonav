@@ -24,7 +24,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class SiteResource extends Resource
 {
   protected static ?string $model = Site::class;
-
+  protected static ?string $navigationGroup = 'Lainnya';
   protected static ?string $navigationIcon = 'heroicon-o-cog';
   protected static ?int $navigationSort = 4 ;
 
