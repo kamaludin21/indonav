@@ -1,4 +1,4 @@
-@extends('layouts.app-v2')
+@extends('layouts.app-v3')
 
 @section('content')
   <div class="px-2 md:px-44 py-32 flex justify-center">
