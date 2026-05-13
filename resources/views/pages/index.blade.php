@@ -105,6 +105,6 @@
         <path d="M6 14.04a3.5 3.5 0 1 0 3.96 3.96" />
       </svg>
     </x-commons.line>
-    <x-commons.cta :wa="$sites['wa-link']" />
+    <x-commons.cta :wa="$sites['wa-link']" :cta="$sites['site-cta']" />
   </div>
 @endsection

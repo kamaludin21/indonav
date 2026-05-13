@@ -22,9 +22,13 @@
 @endpush
 
 @section('content')
-  <section class="py-32 px-4 lg:px-0 bg-topo relative overflow-hidden">
+  <section class="py-32 px-4 lg:px-0 relative bg-white overflow-hidden">
     <!-- Layer 2: Soft Spotlight for Depth -->
     <div class="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_50%,transparent_20%,rgba(212,212,216,0.8)_100%)]">
+    </div>
+    
+    <div class="absolute bottom-0 right-0 w-full h-full overflow-hidden pointer-events-none">
+      <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-orange-600/10 rounded-full blur-[120px]"></div>
     </div>
 
     <!-- Layer 3: Accent Glow (Orange INDONAV) -->

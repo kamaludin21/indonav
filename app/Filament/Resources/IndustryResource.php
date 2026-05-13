@@ -64,6 +64,7 @@ class IndustryResource extends Resource
             'image' => 'Image',
             'video' => 'YouTube Video',
           ])
+          ->native(false)
           ->required()
           ->reactive(),
 

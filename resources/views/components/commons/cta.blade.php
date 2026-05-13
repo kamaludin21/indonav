@@ -1,24 +1,14 @@
-@props(['wa'])
+@props(['wa', 'cta'])
 
 <div class="pt-24 pb-32 antialiased px-2 md:px-0">
   <div
-    class="relative overflow-hidden w-full max-w-6xl mx-auto bg-orange-500 rounded-[40px] shadow-xl min-h-[400px] flex items-center">
-
+    class="relative overflow-hidden w-full max-w-6xl mx-auto rounded-[40px] shadow-xl min-h-[400px] flex items-center">
+    {{-- background ini ganti menjadi image saja --}}
     <div class="absolute inset-0 pointer-events-none">
-      <div class="absolute -right-20 top-1/2 -translate-y-1/2 flex items-center justify-center">
-        <div
-          class="animate-ripple w-[400px] h-[400px] md:w-[600px] md:h-[600px] rounded-full border-[30px] border-white/5"
-          style="animation-delay: 0s;"></div>
-        <div
-          class="animate-ripple absolute w-[300px] h-[300px] md:w-[450px] md:h-[450px] rounded-full border-[30px] border-white/10"
-          style="animation-delay: 0.5s;"></div>
-        <div
-          class="animate-ripple absolute w-[200px] h-[200px] md:w-[300px] md:h-[300px] rounded-full border-[30px] border-white/20"
-          style="animation-delay: 1s;"></div>
-        <div
-          class="animate-ripple absolute w-[100px] h-[100px] md:w-[150px] md:h-[150px] rounded-full border-[30px] border-white/40"
-          style="animation-delay: 1.5s;"></div>
-      </div>
+      <img src="{{ asset('storage/' .$cta->image) }}" alt="" class="w-full h-full object-cover">
+
+      {{-- Optional overlay --}}
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-600/30 to-orange-500/40"></div>
     </div>
 
     <div class="relative z-10 w-full px-8 py-16 md:px-16 flex flex-col md:flex-row justify-between items-center gap-10">

@@ -46,41 +46,65 @@
             </a>
           </li>
           @if ($features->isNotEmpty())
-          <li class="hover:underline underline-offset-2">
-            <a href="#features">
-              features
-            </a>
-          </li>
+            <li class="hover:underline underline-offset-2">
+              <a href="#features">
+                features
+              </a>
+            </li>
           @endif
           @if ($specifications->isNotEmpty())
-          <li class="hover:underline underline-offset-2">
-            <a href="#download">
-              download
-            </a>
-          </li>
+            <li class="hover:underline underline-offset-2">
+              <a href="#download">
+                download
+              </a>
+            </li>
           @endif
         </ul>
       </div>
     </div>
   </div>
   {{-- Product header --}}
-  <div class="w-full bg-zinc-200">
+  <div class="w-full bg-zinc-200 bg-topo border-b border-zinc-300">
     <div class="max-w-6xl px-2 lg:px-0 mx-auto py-16">
       <div class="flex flex-wrap justify-between items-center relative">
         <div class="order-2 md:order-1 grid gap-2 w-full md:w-1/2 z-10">
-          <p class="text-5xl font-bold text-slate-800 ">{{ $product->title }}</p>
+          <p class="text-7xl font-bold text-slate-800 ">{{ $product->title }}</p>
           <p class="text-2xl font-light line-clamp-2 text-slate-700">{{ $product->description }}</p>
         </div>
         <div class="z-10 order-1 md:order-2 flex justify-center w-full md:w-fit">
           <img src="{{ asset('storage/' . $product->image_product) }}" class="w-5/6 md:w-72 h-auto" alt="">
         </div>
-        {{-- Absolute el: hidden sm:block  --}}
-        <div class="absolute top-0 sm:top-2/3 w-full z-0 overflow-hidden">
-          <p class="text-9xl font-bold text-slate-100 whitespace-nowrap text-right">{{ $product->title }}</p>
-        </div>
       </div>
     </div>
   </div>
+  {{-- <div class="w-full bg-zinc-200 overflow-hidden">
+    <div class="max-w-6xl px-2 lg:px-0 mx-auto py-16">
+      <div class="flex gap-4 md:gap-0 flex-wrap justify-between items-center relative">
+
+        <!-- Text -->
+        <div class="order-2 md:order-1 grid gap-2 w-full md:w-1/2 z-10">
+          <p class="text-7xl font-bold text-slate-800">
+            {{ $product->title }}
+          </p>
+
+          <p class="text-2xl font-light line-clamp-2 text-slate-700">
+            {{ $product->description }}
+          </p>
+        </div>
+
+        <!-- Product Image -->
+        <div class="relative z-10 order-1 md:order-2 flex justify-center w-full md:w-fit">
+          <!-- Background Element -->
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="w-64 h-64 bg-gradient-to-br from-orange-300 to-orange-500 rounded-full blur-3xl opacity-40"></div>
+          </div>
+          <!-- Image -->
+          <img src="{{ asset('storage/' . $product->image_product) }}"
+            class="relative w-5/6 md:w-72 h-auto drop-shadow-2xl" alt="">
+        </div>
+      </div>
+    </div>
+  </div> --}}
 
   {{-- Highlight section --}}
   <div class="max-w-6xl px-2 lg:px-0 mx-auto py-16" id="highlight">
@@ -92,7 +116,7 @@
         <img class="w-full h-auto bg-cover rounded-lg" src="{{ asset('storage/' . $product->image_highlight) }}"
           alt="{{ $product->title }}">
       </div>
-      <div class="flex-1 grid gap-2 text-lg text-slate-700">
+      <div class="flex-1 grid gap-2 text-lg text-slate-700 text-justify">
         {!! $product->highlight !!}
       </div>
     </div>

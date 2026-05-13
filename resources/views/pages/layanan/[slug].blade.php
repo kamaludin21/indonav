@@ -152,23 +152,32 @@
     </x-commons.line>
     <div class="pt-24 pb-32 antialiased px-4">
       <div
-        class="relative overflow-hidden w-full max-w-6xl mx-auto bg-topo rounded-[40px] shadow-xl min-h-[400px] flex items-center ring-1 ring-orange-100">
+        class="relative overflow-hidden w-full max-w-6xl mx-auto rounded-[40px] shadow-xl min-h-[400px] flex items-center ring-1 ring-orange-100">
+
+        {{-- Letak background image disini --}}
+        <div class="absolute inset-0 pointer-events-none">
+          <img src="{{ asset('storage/' . $sites['cta-layanan']?->image) }}" alt="" class="w-full h-full object-cover">
+
+          {{-- Optional overlay --}}
+          <div class="absolute inset-0 bg-slate-400/40"></div>
+        </div>
+        {{-- Letak background image disini --}}
 
         <div
           class="relative z-10 w-full px-8 py-16 md:px-16 flex flex-col md:flex-row justify-center items-center gap-10">
 
           <div class="max-w-2xl text-center">
-            <h2 class="text-orange-500 text-3xl md:text-5xl font-bold leading-tight mb-6">
+            <h2 class="text-orange-500 drop-shadow-lg text-3xl md:text-5xl font-bold leading-tight mb-6">
               Hadirkan Akurasi Standar Industri ke Dalam Proyek Anda
             </h2>
 
-            <p class="text-slate-700 text-lg md:text-xl font-medium mb-10 leading-relaxed">
+            <p class="text-white text-lg drop-shadow md:text-xl font-medium mb-10 leading-relaxed">
               Mulai dari akuisisi data udara hingga pemeliharaan instrumen presisi, tim ahli kami siap mendukung
               kesuksesan operasional Anda melalui solusi geospasial yang terukur dan terintegrasi.
             </p>
 
             <div class="flex justify-center">
-              <a href="#"
+              <a href="{!! $sites['wa-link']?->url !!}"
                 class="group relative flex items-center gap-4 bg-slate-800 hover:bg-orange-600 transition-colors py-4 pl-7 px-5 rounded-full shadow-lg">
                 <span class="text-white font-semibold text-lg">Konsultasi dengan Kami</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"

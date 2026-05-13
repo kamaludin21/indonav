@@ -58,6 +58,10 @@
               class="ring-1 p-2 rounded-lg ring-slate-600 text-slate-200 hover:bg-white hover:text-slate-800 transition-all">
               <x-icons.instagram class="h-5 w-auto" />
             </a>
+            <a href="{!! $sites['tiktok']?->url !!}" target="_blank"
+              class="ring-1 p-2 rounded-lg ring-slate-600 text-slate-200 hover:bg-white hover:text-slate-800 transition-all">
+              <x-icons.tiktok class="h-5 w-auto" />
+            </a>
           </div>
         </div>
       </div>
@@ -102,8 +106,9 @@
           <a href="/" class="hover:text-orange-400 transition-colors">Beranda</a>
           <a href="/produk" class="hover:text-orange-400 transition-colors">Produk</a>
           <a href="/layanan" class="hover:text-orange-400 transition-colors">Layanan</a>
+          <a href="/download-center" class="hover:text-orange-400 transition-colors">Download Center</a>
           <a href="/portofolio/pengalaman" class="hover:text-orange-400 transition-colors">Portofolio</a>
-          <a href="/tentang-kami/visi-misi" class="hover:text-orange-400 transition-colors text-nowrap">Tentang Kami</a>
+          <a href="/tentang-kami/kontak" class="hover:text-orange-400 transition-colors text-nowrap">Tentang Kami</a>
         </nav>
       </div>
 

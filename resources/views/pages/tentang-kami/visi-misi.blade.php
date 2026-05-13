@@ -23,16 +23,13 @@
 @endpush
 
 @section('content')
-  <section class="relative py-32 overflow-hidden bg-slate-300">
-    <!-- Background Layer: Gradient & Pattern -->
-    <div class="absolute inset-0 z-0">
-      <!-- Radial Gradient Spotlight (Terang) -->
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(234,88,12,0.15),transparent_60%)]"></div>
-
-      <!-- Subtle Engineering Grid Pattern (Dark Lines) -->
-      <div class="absolute inset-0 opacity-[0.05]"
-        style="background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px); background-size: 40px 40px;">
-      </div>
+  <section class="relative py-32 overflow-hidden bg-white">
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+      <div class="absolute -top-24 -left-24 w-96 h-96 bg-orange-600/10 rounded-full blur-[120px]"></div>
+    </div>
+    
+    <div class="absolute bottom-0 right-0 w-full h-full overflow-hidden pointer-events-none">
+      <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-orange-600/10 rounded-full blur-[120px]"></div>
     </div>
 
     <div class="max-w-6xl mx-auto relative z-10 px-4 lg:px-0">

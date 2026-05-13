@@ -51,28 +51,31 @@
           'children' => $dbServices,
       ],
       [
+          'title' => 'Download Center',
+          'url' => url('/download-center'),
+          'active_pattern' => 'download-center*',
+          'children' => [],
+      ],
+      [
           'title' => 'Portofolio',
           'url' => url('/portofolio/pengalaman'),
           'active_pattern' => 'portofolio*',
           'children' => [
+              ['title' => 'Event', 'url' => url('/portofolio/event')],
+              ['title' => 'Video', 'url' => url('/portofolio/video')],
               ['title' => 'Pengalaman', 'url' => url('/portofolio/pengalaman')],
               ['title' => 'Kaleidoskop Survey', 'url' => url('/portofolio/kaleidoskop-survey')],
           ],
       ],
       [
           'title' => 'Tentang Kami',
-          'url' => url('/tentang-kami/visi-misi'),
+          'url' => url('/tentang-kami/kontak'),
           'active_pattern' => 'tentang-kami*',
           'children' => [
+              ['title' => 'Kontak', 'url' => url('/tentang-kami/kontak')],
               ['title' => 'Visi Misi', 'url' => url('/tentang-kami/visi-misi')],
               ['title' => 'Perjalanan Perusahaan', 'url' => url('/tentang-kami/perjalanan-perusahaan')],
           ],
-      ],
-      [
-          'title' => 'Kontak',
-          'url' => url('/kontak'),
-          'active_pattern' => 'kontak*',
-          'children' => [],
       ],
   ];
 
@@ -111,6 +114,21 @@
 </head>
 
 <body class="w-full bg-slate-50 relative">
+  <a href="{!! $sites['wa-link']?->url !!}" target="_blank"
+    class="group fixed right-6 bottom-6 z-[9999] flex items-center gap-2">
+    <span
+      class="rounded-full border border-slate-100 bg-white px-4 py-2 text-sm font-bold text-slate-800 opacity-0 shadow-xl transition-opacity duration-300 group-hover:opacity-100">
+      Hubungi Kami </span>
+    <div
+      class="animate-bounce-slow rounded-full bg-[#25D366] p-4 shadow-2xl transition-colors duration-300 hover:bg-[#20ba5a]">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="h-10 md:h-14 w-auto text-white">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+        <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+      </svg>
+    </div>
+  </a>
   <header x-data="{
       scrolled: {{ request()->is('/') ? 'false' : 'true' }},
       isMobile: window.innerWidth < 1024
