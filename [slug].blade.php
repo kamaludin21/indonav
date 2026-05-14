@@ -65,14 +65,18 @@
     </div>
   </div>
   {{-- Product header --}}
-  <div class="w-full bg-zinc-200 overflow-hidden relative">
+  <div class="w-full bg-zinc-200 overflow-hidden relative max-h-96">
+
     <div class="absolute inset-0 z-0 flex justify-center">
       <img src="{{ asset('storage/' . $industry->image) }}" class="h-full w-full object-cover opacity-50"
         alt="background">
     </div>
+
     <div class="absolute inset-0 z-10 bg-gradient-to-r from-slate-400 via-slate-400/60 to-transparent"></div>
+
     <div class="max-w-6xl px-2 lg:px-0 mx-auto py-16 relative z-10">
-      <div class="flex gap-6 md:gap-0 flex-wrap justify-between items-center relative">
+      <div class="flex gap-4 md:gap-0 flex-wrap justify-between items-center relative">
+
         <!-- Text -->
         <div class="order-2 md:order-1 grid gap-2 w-full md:w-1/2 z-10">
           <p class="text-7xl font-bold text-slate-800">
@@ -105,7 +109,7 @@
     <div class="flex flex-col-reverse md:flex-row items-start gap-6">
 
       <!-- Bagian Teks -->
-      <div class="flex-1 grid gap-2 text-lg text-slate-700 text-justify html-content">
+      <div class="flex-1 grid gap-2 text-lg text-slate-700 text-justify">
         {!! $product->highlight !!}
       </div>
 
