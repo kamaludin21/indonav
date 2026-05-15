@@ -42,11 +42,17 @@
     <div class="absolute inset-0 z-10 bg-black/40"></div>
 
     <div class="relative z-20 flex h-full items-center justify-center text-center px-4">
-      <div class="max-w-3xl text-white">
-        <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
-          <span class="text-orange-500">Indonav</span> Teknologi
-        </h1>
-        <p class="text-lg md:text-xl mb-8 text-gray-200">
+      <div class="max-w-3xl text-white space-y-6">
+        @if (data_get($sites, 'brand-image.image'))
+          <img src="{{ asset('storage/' . data_get($sites, 'brand-image.image')) }}" class="w-56 lg:w-80 h-auto mx-auto"
+            alt="Indonav Logo">
+        @else
+          <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+            <span class="text-orange-500">Indonav</span> Teknologi
+          </h1>
+        @endif
+
+        <p class="text-lg md:text-xl text-gray-200">
           Solusi survei darat, laut, dan udara terintegrasi dengan teknologi terkini dan layanan profesional akurat.
         </p>
         <div class="flex gap-4 justify-center">

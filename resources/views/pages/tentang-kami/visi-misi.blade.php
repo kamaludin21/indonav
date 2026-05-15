@@ -23,7 +23,7 @@
 @endpush
 
 @section('content')
-  <section class="relative py-32 overflow-hidden bg-white">
+  <section class="relative py-32 overflow-hidden bg-gradient-to-tl from-slate-50 via-orange-200 to-orange-400">
     <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
       <div class="absolute -top-24 -left-24 w-96 h-96 bg-orange-600/10 rounded-full blur-[120px]"></div>
     </div>
@@ -65,8 +65,8 @@
                   Kami</span>
               </div>
               <h2 class="text-slate-800 text-4xl md:text-5xl font-bold tracking-tighter leading-tight">
-                Akurasi Tanpa Batas untuk <br>
-                <span class="text-orange-500">Infrastruktur Dunia</span>
+                Akurasi Terukur <i>untuk</i><br>
+                <span class="text-orange-500"> Dunia Infrastruktur</span>
               </h2>
             </div>
 
