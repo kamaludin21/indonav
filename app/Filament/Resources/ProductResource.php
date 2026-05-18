@@ -17,16 +17,19 @@ use Filament\Forms\Set;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Filament\Tables\Columns\TextColumn;
 
 class ProductResource extends Resource
 {
   protected static ?string $model = Product::class;
   protected static ?string $navigationGroup = 'Konten Website';
-  protected static ?string $navigationLabel = 'Katalog Produk';
   protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
   protected static ?int $navigationSort = 2;
+  protected static ?string $navigationLabel = 'Katalog Produk';
+  protected static ?string $pluralModelLabel = 'Katalog Produk';
+  protected static ?string $modelLabel = 'Katalog Produk';
+  protected static ?string $slug = 'katalog-produk';
 
   public static function form(Form $form): Form
   {
@@ -35,32 +38,11 @@ class ProductResource extends Resource
         Select::make('industry_id')
           ->label('Kategori Produk')
           ->options(Industry::all()->pluck('title', 'id'))
-          ->searchable()
           ->required()
-          ->native(false)
-          ->columnSpanFull(),
-        Textarea::make('title')
-          ->autosize()
-          ->label('Nama Produk')
-          ->maxLength(250)
-          ->rows(1)
-          ->live(onBlur: true)
-          ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
-          ->required(),
-        TextInput::make('slug')
-          ->label('Slug')
-          ->placeholder('Slug')
-          ->unique(ignoreRecord: true)
-          ->disabled()
-          ->dehydrated()
-          ->readOnly(),
-        Textarea::make('description')
-          ->autosize()
-          ->rows(1)
-          ->label('Keterangan Pendek')
-          ->maxLength(300),
+          ->native(false),
         Select::make('tags')
           ->label('Bidang Produk')
+          ->native(false)
           ->relationship(
             name: 'tags',
             titleAttribute: 'name',
@@ -83,6 +65,21 @@ class ProductResource extends Resource
               ->readOnly()
               ->required(),
           ]),
+        Textarea::make('title')
+          ->autosize()
+          ->label('Nama Produk')
+          ->maxLength(250)
+          ->rows(1)
+          ->live(onBlur: true)
+          ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
+          ->required(),
+        TextInput::make('slug')
+          ->label('Slug')
+          ->placeholder('Slug')
+          ->unique(ignoreRecord: true)
+          ->disabled()
+          ->dehydrated()
+          ->readOnly(),
         FileUpload::make('image_product')
           ->label('Gambar Produk')
           ->maxSize(1024)
@@ -91,8 +88,11 @@ class ProductResource extends Resource
           ->openable()
           ->downloadable()
           ->helperText('Maksimal ukuran file 1000KB atau 1MB'),
-        RichEditor::make('highlight')
-          ->label('Highlight'),
+        Textarea::make('description')
+          ->autosize()
+          ->rows(1)
+          ->label('Keterangan Pendek')
+          ->maxLength(300),
         FileUpload::make('image_highlight')
           ->label('Gambar Ilustrasi')
           ->maxSize(1024)
@@ -101,22 +101,33 @@ class ProductResource extends Resource
           ->openable()
           ->downloadable()
           ->helperText('Maksimal ukuran file 1000KB atau 1MB'),
-        Repeater::make('specifications')
-          ->label('Spesifikasi Teknis')
+        RichEditor::make('highlight')
+          ->label('Keterangan Produk (Highlight)')
+          ->maxLength(5000),
+        Grid::make('1')
           ->schema([
-            FileUpload::make('document')
-              ->label('File')
-              ->maxSize(5120)
-              ->openable()
-              ->downloadable()
-              ->directory('products/documents')
-              ->helperText('Maksimal ukuran: 5MB'),
-            TextInput::make('title')
-              ->label('Judul File Spesifikasi'),
-          ]),
+            Repeater::make('specifications')
+              ->label('Spesifikasi Teknis')
+              ->schema([
+                FileUpload::make('document')
+                  ->label('File')
+                  ->maxSize(5120)
+                  ->openable()
+                  ->downloadable()
+                  ->directory('products/documents')
+                  ->helperText('Maksimal ukuran: 5MB'),
+                TextInput::make('title')
+                  ->label('Judul File Spesifikasi'),
+              ])
+              ->addActionLabel('Tambah File Spesifikasi')
+              ->reorderable()
+              ->grid(2)
+              ->required(),
+          ])->columnSpanFull(),
         Grid::make('1')
           ->schema([
             Repeater::make('features')
+              ->label('Fitur Produk')
               ->schema([
                 FileUpload::make('image')
                   ->label('Gambar')
@@ -127,12 +138,16 @@ class ProductResource extends Resource
                   ->openable()
                   ->downloadable()
                   ->helperText('Maksimal ukuran file 1000KB atau 1MB'),
-                TextInput::make('title'),
-                Textarea::make('description')->autosize()->rows(1),
+                TextInput::make('title')
+                  ->label('Nama Fitur'),
+                Textarea::make('description')
+                  ->autosize()
+                  ->rows(1),
               ])
               ->reorderable()
               ->grid(3)
-              ->required(),
+              ->required()
+              ->addActionLabel('Tambah Fitur'),
           ])->columnSpanFull(),
 
       ]);

@@ -16,6 +16,7 @@ return new class extends Migration
       $table->string('title');
       $table->string('slug');
       $table->text('description');
+      $table->string('media_type')->default('image');
       $table->string('image')->nullable(); // stores image path or video URL
       $table->timestamps();
     });

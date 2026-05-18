@@ -52,9 +52,9 @@ class ArticleResource extends Resource
                     ->readOnly()
                     ->required(),
                 Select::make('article_category_id')
+                    ->label('Kategori Berita')
                     ->relationship('category', 'name')
                     ->native(false)
-                    ->preload()
                     ->required(),
                 FileUpload::make('image')
                     ->label('Gambar')

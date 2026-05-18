@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\IndustryResource\Pages;
 use App\Models\Industry;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
@@ -45,12 +46,33 @@ class IndustryResource extends Resource
           ->disabled()
           ->dehydrated()
           ->readOnly(),
+        FileUpload::make('image')
+          ->label('Gambar Ilustrasi')
+          ->maxSize(512)
+          ->directory('industries')
+          ->image()
+          ->imageEditor()
+          ->openable()
+          ->downloadable()
+          ->helperText('Maksimal ukuran file 500KB'),
         Textarea::make('description')
           ->autosize()
           ->rows(1)
           ->label('Keterangan')
           ->maxLength(300),
-        // FileUpload::make('image')
+        Hidden::make('media_type')
+          ->default('image'),
+        // Select::make('media_type')
+        //   ->label('Media Type')
+        //   ->options([
+        //     'image' => 'Image',
+        //     'video' => 'YouTube Video',
+        //   ])
+        //   ->native(false)
+        //   ->required()
+        //   ->default('image'),
+        // // Image uploader when "image" is selected
+        // FileUpload::make('media_image')
         //   ->label('Gambar')
         //   ->maxSize(1024)
         //   ->directory('industries')
@@ -58,33 +80,12 @@ class IndustryResource extends Resource
         //   ->imageEditor()
         //   ->openable()
         //   ->downloadable()
-        //   ->helperText('Maksimal ukuran file 1024 kb atau 1 mb'),
-        Select::make('media_type')
-          ->label('Media Type')
-          ->options([
-            'image' => 'Image',
-            'video' => 'YouTube Video',
-          ])
-          ->native(false)
-          ->required()
-          ->reactive(),
-
-        // Image uploader when "image" is selected
-        FileUpload::make('media_image')
-          ->label('Gambar')
-          ->maxSize(1024)
-          ->directory('industries')
-          ->image()
-          ->imageEditor()
-          ->openable()
-          ->downloadable()
-          ->helperText('Maksimal ukuran file 1024 kb atau 1 mb')
-          ->visible(fn($get) => $get('media_type') === 'image'),
-
-        // YouTube URL input when "video" is selected
-        TextInput::make('media_video')
-          ->label('YouTube Video URL')
-          ->visible(fn($get) => $get('media_type') === 'video'),
+        //   ->helperText('Maksimal ukuran file 1024 kb atau 1 mb')
+        //   ->visible(fn($get) => $get('media_type') === 'image'),
+        // // YouTube URL input when "video" is selected
+        // TextInput::make('media_video')
+        //   ->label('YouTube Video URL')
+        //   ->visible(fn($get) => $get('media_type') === 'video'),
       ]);
   }
 
