@@ -24,7 +24,9 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class EventResource extends Resource
 {
     protected static ?string $model = Event::class;
-
+    protected static ?string $navigationGroup = 'Konten Website';
+    protected static ?string $navigationLabel = 'Event';
+    protected static ?int $navigationSort = 4;
     protected static ?string $navigationIcon = 'heroicon-o-calendar';
 
     public static function form(Form $form): Form

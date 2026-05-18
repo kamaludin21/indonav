@@ -25,8 +25,10 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class ArticleResource extends Resource
 {
     protected static ?string $model = Article::class;
-    protected static ?string $navigationGroup = 'Portofolio';
+    protected static ?string $navigationGroup = 'Konten Website';
+    protected static ?string $navigationLabel = 'Artikel';
     protected static ?string $navigationIcon = 'heroicon-o-newspaper';
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
@@ -89,10 +91,24 @@ class ArticleResource extends Resource
                 ImageColumn::make('image'),
                 TextColumn::make('category.name')
                     ->label('Kategori'),
-
                 TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable(),
+                    ->label('Dibuat')
+                    ->date('d F Y')
+                    ->sortable()
+                    ->toggleable(),
+                TextColumn::make('updated_at')
+                    ->label('Diperbarui')
+                    ->date('d F Y')
+                    ->sortable()
+                    ->toggleable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+            ])
+            ->filters([
+                Tables\Filters\SelectFilter::make('category.name')
+                    ->relationship('category', 'name')
+                    ->native(false)
+                    ->multiple()
+                    ->preload(),
             ])
             ->actions([
                 Tables\Actions\ActionGroup::make([

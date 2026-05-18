@@ -3,9 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ArticleCategoryResource\Pages;
-use App\Filament\Resources\ArticleCategoryResource\RelationManagers;
 use App\Models\ArticleCategory;
-use Filament\Forms;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -15,15 +13,12 @@ use Filament\Tables\Table;
 use Filament\Forms\Set;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ArticleCategoryResource extends Resource
 {
     protected static ?string $model = ArticleCategory::class;
-    protected static ?string $navigationGroup = 'Portofolio';
-    protected static ?string $navigationParentItem = 'Articles';
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Konten Website';
+    protected static ?string $navigationParentItem = 'Artikel';
 
     public static function form(Form $form): Form
     {

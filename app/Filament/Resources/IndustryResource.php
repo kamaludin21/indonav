@@ -19,11 +19,12 @@ use Illuminate\Support\Str;
 class IndustryResource extends Resource
 {
   protected static ?string $model = Industry::class;
-  protected static ?string $navigationGroup = 'Produk';
-  protected static ?string $navigationParentItem = 'Products';
+  protected static ?string $navigationGroup = 'Konten Website';
+  protected static ?string $navigationParentItem = 'Katalog Produk';
   protected static ?string $navigationLabel = 'Kategori Produk';
-  protected static ?string $navigationIcon = 'heroicon-o-home-modern';
-  protected static ?int $navigationSort = 3;
+  protected static ?string $pluralModelLabel = 'Kategori Produk';
+  protected static ?string $modelLabel = 'Kategori Produk';
+  protected static ?string $slug = 'kategori-produk';
 
   public static function form(Form $form): Form
   {

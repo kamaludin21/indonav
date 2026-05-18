@@ -6,6 +6,7 @@ use App\Filament\Resources\ProductResource\Pages;
 use App\Models\Product;
 use App\Models\Industry;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Textarea;
@@ -22,7 +23,8 @@ use Filament\Tables\Table;
 class ProductResource extends Resource
 {
   protected static ?string $model = Product::class;
-  protected static ?string $navigationGroup = 'Produk';
+  protected static ?string $navigationGroup = 'Konten Website';
+  protected static ?string $navigationLabel = 'Katalog Produk';
   protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
   protected static ?int $navigationSort = 2;
 
@@ -100,6 +102,7 @@ class ProductResource extends Resource
           ->downloadable()
           ->helperText('Maksimal ukuran file 1000KB atau 1MB'),
         Repeater::make('specifications')
+          ->label('Spesifikasi Teknis')
           ->schema([
             FileUpload::make('document')
               ->label('File')
@@ -107,23 +110,30 @@ class ProductResource extends Resource
               ->openable()
               ->downloadable()
               ->directory('products/documents')
-              ->helperText('Maksimal ukuran file 5000KB atau 5MB'),
-            TextInput::make('title'),
+              ->helperText('Maksimal ukuran: 5MB'),
+            TextInput::make('title')
+              ->label('Judul File Spesifikasi'),
           ]),
-        Repeater::make('features')
+        Grid::make('1')
           ->schema([
-            FileUpload::make('image')
-              ->label('Gambar')
-              ->maxSize(1024)
-              ->directory('products/features')
-              ->image()
-              ->imageEditor()
-              ->openable()
-              ->downloadable()
-              ->helperText('Maksimal ukuran file 1000KB atau 1MB'),
-            TextInput::make('title'),
-            Textarea::make('description')->autosize()->rows(1),
-          ]),
+            Repeater::make('features')
+              ->schema([
+                FileUpload::make('image')
+                  ->label('Gambar')
+                  ->maxSize(1024)
+                  ->directory('products/features')
+                  ->image()
+                  ->imageEditor()
+                  ->openable()
+                  ->downloadable()
+                  ->helperText('Maksimal ukuran file 1000KB atau 1MB'),
+                TextInput::make('title'),
+                Textarea::make('description')->autosize()->rows(1),
+              ])
+              ->reorderable()
+              ->grid(3)
+              ->required(),
+          ])->columnSpanFull(),
 
       ]);
   }
@@ -142,14 +152,28 @@ class ProductResource extends Resource
           ->label('Kategori')
           ->searchable(),
         TextColumn::make('tags.name')
-          ->label('Bidang'),
+          ->label('Tag')
+          ->searchable(),
+        TextColumn::make('created_at')
+          ->label('Dibuat')
+          ->date('d F Y')
+          ->sortable()
+          ->toggleable()
+          ->toggleable(isToggledHiddenByDefault: true),
+        TextColumn::make('updated_at')
+          ->label('Diperbarui')
+          ->date('d F Y')
+          ->sortable()
+          ->toggleable()
+          ->toggleable(isToggledHiddenByDefault: true),
       ])
       ->actions([
         Tables\Actions\ActionGroup::make([
           Tables\Actions\EditAction::make(),
           Tables\Actions\DeleteAction::make(),
         ])
-      ]);
+      ])
+      ->defaultPaginationPageOption(25);
   }
 
   public static function getRelations(): array

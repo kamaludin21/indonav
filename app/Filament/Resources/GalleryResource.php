@@ -24,9 +24,13 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class GalleryResource extends Resource
 {
     protected static ?string $model = Gallery::class;
-    protected static ?string $navigationGroup = 'Portofolio';
+    protected static ?string $navigationGroup = 'Konten Website';
+    protected static ?int $navigationSort = 7;
+    protected static ?string $navigationIcon = 'heroicon-o-archive-box';
     protected static ?string $navigationLabel = 'Kaleidoskop Survey';
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $pluralModelLabel = 'Kaleidoskop Survey';
+    protected static ?string $modelLabel = 'Kaleidoskop Survey';
+    protected static ?string $slug = 'kaleidoskop-survey';
 
     public static function form(Form $form): Form
     {

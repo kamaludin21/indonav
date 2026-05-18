@@ -24,9 +24,13 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class CompanyJourneyResource extends Resource
 {
     protected static ?string $model = CompanyProfile::class;
-    protected static ?string $navigationGroup = 'Tentang Kami';  
-    protected static ?string $navigationLabel = 'Company Journey';
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Sistem';
+    protected static ?string $navigationIcon = 'heroicon-o-folder';
+    protected static ?int $navigationSort = 4;
+    protected static ?string $navigationLabel = 'Riwayat Perusahaan';
+    protected static ?string $pluralModelLabel = 'Riwayat Perusahaan';
+    protected static ?string $modelLabel = 'Riwayat Perusahaan';
+    protected static ?string $slug = 'riwayat-perusahaan';
 
     public static function form(Form $form): Form
     {

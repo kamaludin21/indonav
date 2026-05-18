@@ -18,15 +18,17 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class SiteResource extends Resource
 {
   protected static ?string $model = Site::class;
-  protected static ?string $navigationGroup = 'Lainnya';
+  protected static ?string $navigationGroup = 'Sistem';
   protected static ?string $navigationIcon = 'heroicon-o-cog';
-  protected static ?int $navigationSort = 4 ;
+  protected static ?int $navigationSort = 3;
+  protected static ?string $navigationLabel = 'Konfigurasi Situs';
+  protected static ?string $pluralModelLabel = 'Konfigurasi Situs';
+  protected static ?string $modelLabel = 'Konfigurasi Situs';
+  protected static ?string $slug = 'konfigurasi-situs';
 
   public static function form(Form $form): Form
   {

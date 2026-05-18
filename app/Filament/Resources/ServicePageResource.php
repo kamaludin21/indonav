@@ -26,8 +26,10 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class ServicePageResource extends Resource
 {
     protected static ?string $model = ServicePage::class;
-    protected static ?string $navigationGroup = 'Layanan';
+    protected static ?string $navigationGroup = 'Konten Website';
+    protected static ?string $navigationLabel = 'Halaman Layanan';
     protected static ?string $navigationIcon = 'heroicon-o-ticket';
+    protected static ?int $navigationSort = 3;
 
     public static function form(Form $form): Form
     {
@@ -49,7 +51,7 @@ class ServicePageResource extends Resource
                             ->live(onBlur: true)
                             ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                             ->required(),
-                            
+
                         TextInput::make('slug')
                             ->label('Slug')
                             ->placeholder('Slug')
@@ -128,8 +130,11 @@ class ServicePageResource extends Resource
                 TextColumn::make('label')
                     ->label('Layanan')
                     ->searchable(),
+                TextColumn::make('slug')
+                    ->label('Url Slug')
+                    ->prefix('/layanan/'),
                 TextColumn::make('title')
-                    ->label('Judul Layanan')
+                    ->label('Deskripsi Singkat Layanan')
                     ->searchable(),
             ])
             ->actions([

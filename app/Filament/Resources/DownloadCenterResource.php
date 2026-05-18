@@ -20,7 +20,9 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class DownloadCenterResource extends Resource
 {
     protected static ?string $model = DownloadCenter::class;
-
+    protected static ?string $navigationGroup = 'Konten Website';
+    protected static ?string $navigationLabel = 'Download Center';
+    protected static ?int $navigationSort = 7;
     protected static ?string $navigationIcon = 'heroicon-o-archive-box-arrow-down';
 
     public static function form(Form $form): Form

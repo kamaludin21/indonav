@@ -59,11 +59,11 @@ class AdminPanelProvider extends PanelProvider
         Authenticate::class,
       ])
       ->navigationGroups([
-        NavigationGroup::make()->label('Produk'),
-        NavigationGroup::make()->label('Portofolio'),
+        NavigationGroup::make()->label('Konten Website'),
+        NavigationGroup::make()->label('Sistem'),
         NavigationGroup::make()->label('Lainnya'),
-        NavigationGroup::make()->label('Layanan'),
-        NavigationGroup::make()->label('Tentang Kami'),
+        // NavigationGroup::make()->label('Layanan'),
+        // NavigationGroup::make()->label('Tentang Kami'),
       ])
       ->plugins([
         FilamentEditProfilePlugin::make()

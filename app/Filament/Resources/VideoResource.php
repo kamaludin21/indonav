@@ -3,9 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\VideoResource\Pages;
-use App\Filament\Resources\VideoResource\RelationManagers;
 use App\Models\Video;
-use Filament\Forms;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -15,13 +13,13 @@ use Filament\Tables\Table;
 use Filament\Forms\Set;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class VideoResource extends Resource
 {
     protected static ?string $model = Video::class;
-
+    protected static ?string $navigationGroup = 'Konten Website';
+    protected static ?string $navigationLabel = 'Video';
+    protected static ?int $navigationSort = 6;
     protected static ?string $navigationIcon = 'heroicon-o-video-camera';
 
     public static function form(Form $form): Form
@@ -61,6 +59,21 @@ class VideoResource extends Resource
                 TextColumn::make('title')
                     ->label('Judul')
                     ->searchable(),
+                TextColumn::make('url')
+                    ->label('URL Video')
+                    ->searchable(),
+                TextColumn::make('created_at')
+                    ->label('Dibuat')
+                    ->date('d F Y')
+                    ->sortable()
+                    ->toggleable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('updated_at')
+                    ->label('Diperbarui')
+                    ->date('d F Y')
+                    ->sortable()
+                    ->toggleable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->actions([
                 Tables\Actions\ActionGroup::make([
